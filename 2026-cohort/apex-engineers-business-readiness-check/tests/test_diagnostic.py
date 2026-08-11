@@ -5,6 +5,7 @@ import unittest
 from diagnostic import (
     NO,
     NOT_APPLICABLE,
+    QUESTIONS,
     YES,
     SECURITY_CHECKPOINTS,
     build_context_guidance,
@@ -80,6 +81,10 @@ class DiagnosticTests(unittest.TestCase):
             ["inventory", "customers", "booking"],
         )
 
+    def test_recommended_notes_are_distinct_from_diagnostic_explanations(self):
+        for question in QUESTIONS.values():
+            self.assertNotEqual(question.next_step_note, question.explanation)
+
     def test_readiness_breakdown_covers_every_answer_state(self):
         answers = {
             "inventory": NO,
@@ -141,6 +146,7 @@ class DiagnosticTests(unittest.TestCase):
         self.assertIn(
             "1. Prioritize POS and online inventory synchronization.", report
         )
+        self.assertIn("connect the highest-volume sales channel first", report)
         self.assertIn("Business name: Example Store", report)
         self.assertIn("Inventory synchronization: Needs attention (No)", report)
         self.assertIn("MODERNIZATION ACTION PLAN", report)

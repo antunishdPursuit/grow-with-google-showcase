@@ -36,6 +36,7 @@ class Question:
     prompt: str
     weight: int
     recommendation: str
+    next_step_note: str
     explanation: str
     immediate_action: str
     thirty_day_action: str
@@ -94,6 +95,10 @@ QUESTIONS: dict[str, Question] = {
         ),
         weight=5,
         recommendation="Prioritize POS and online inventory synchronization.",
+        next_step_note=(
+            "Start by identifying where stock counts are updated manually, then "
+            "connect the highest-volume sales channel first."
+        ),
         explanation=(
             "Disconnected inventory systems can cause incorrect stock counts, "
             "overselling, and manual reconciliation."
@@ -121,6 +126,10 @@ QUESTIONS: dict[str, Question] = {
         prompt="Does checkout support digital wallets and guest checkout?",
         weight=4,
         recommendation="Add digital-wallet support and guest checkout.",
+        next_step_note=(
+            "Review checkout on a phone, then enable the wallet and guest options "
+            "supported by the current payment provider."
+        ),
         explanation=(
             "Limited checkout options can create avoidable friction for customers."
         ),
@@ -147,6 +156,10 @@ QUESTIONS: dict[str, Question] = {
         prompt="Are customer emails captured at the point of sale?",
         weight=3,
         recommendation="Add customer email capture and follow-up automation.",
+        next_step_note=(
+            "Add a consent-based email prompt during checkout and route valid "
+            "addresses into one simple follow-up process."
+        ),
         explanation=(
             "Missing contact information limits customer follow-up and retention "
             "workflows."
@@ -174,6 +187,10 @@ QUESTIONS: dict[str, Question] = {
         prompt="Can customers book appointments online at any time?",
         weight=2,
         recommendation="Add a secure 24/7 online booking system.",
+        next_step_note=(
+            "Pilot online booking for one service before expanding it across the "
+            "full schedule."
+        ),
         explanation=(
             "Manual scheduling can prevent customers from booking outside business "
             "hours."
@@ -475,7 +492,7 @@ def generate_report(
     if priorities:
         for index, (_, question) in enumerate(priorities, start=1):
             lines.append(f"{index}. {question.recommendation}")
-            lines.append(f"   {question.explanation}")
+            lines.append(f"   {question.next_step_note}")
     elif result.risk_percentage is None:
         lines.append("Complete at least one applicable area to receive recommendations.")
     else:

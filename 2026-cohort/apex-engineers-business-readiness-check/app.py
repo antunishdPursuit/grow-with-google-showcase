@@ -190,7 +190,7 @@ if submitted:
             if priorities:
                 for index, (_, question) in enumerate(priorities, start=1):
                     st.markdown(f"**{index}. {question.recommendation}**")
-                    st.write(question.explanation)
+                    st.write(question.next_step_note)
             elif result.risk_percentage is None:
                 st.write("Complete at least one applicable area to receive recommendations.")
             else:

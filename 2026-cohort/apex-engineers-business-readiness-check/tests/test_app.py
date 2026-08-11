@@ -58,6 +58,7 @@ def test_golden_path_displays_breakdown_and_modernization_plan():
     assert "This week" in rendered_markdown
     assert "Next 30 days" in rendered_markdown
     assert "How to measure progress" in rendered_markdown
+    assert "connect the highest-volume sales channel first" in rendered_markdown
     assert "Questions to ask software providers" in [
         item.label for item in app.expander
     ]
