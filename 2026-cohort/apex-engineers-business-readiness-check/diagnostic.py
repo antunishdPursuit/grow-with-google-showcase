@@ -96,8 +96,7 @@ QUESTIONS: dict[str, Question] = {
         weight=5,
         recommendation="Prioritize POS and online inventory synchronization.",
         next_step_note=(
-            "Start by identifying where stock counts are updated manually, then "
-            "connect the highest-volume sales channel first."
+            "Aim for one reliable inventory count that every sales channel uses."
         ),
         explanation=(
             "Disconnected inventory systems can cause incorrect stock counts, "
@@ -127,8 +126,8 @@ QUESTIONS: dict[str, Question] = {
         weight=4,
         recommendation="Add digital-wallet support and guest checkout.",
         next_step_note=(
-            "Review checkout on a phone, then enable the wallet and guest options "
-            "supported by the current payment provider."
+            "Aim for a checkout that lets customers pay quickly without creating "
+            "an account."
         ),
         explanation=(
             "Limited checkout options can create avoidable friction for customers."
@@ -157,8 +156,8 @@ QUESTIONS: dict[str, Question] = {
         weight=3,
         recommendation="Add customer email capture and follow-up automation.",
         next_step_note=(
-            "Add a consent-based email prompt during checkout and route valid "
-            "addresses into one simple follow-up process."
+            "Build a permissioned customer contact list that supports consistent "
+            "follow-up."
         ),
         explanation=(
             "Missing contact information limits customer follow-up and retention "
@@ -188,8 +187,8 @@ QUESTIONS: dict[str, Question] = {
         weight=2,
         recommendation="Add a secure 24/7 online booking system.",
         next_step_note=(
-            "Pilot online booking for one service before expanding it across the "
-            "full schedule."
+            "Give customers a reliable self-service way to schedule outside "
+            "business hours."
         ),
         explanation=(
             "Manual scheduling can prevent customers from booking outside business "

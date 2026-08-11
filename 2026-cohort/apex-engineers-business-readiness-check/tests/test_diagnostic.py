@@ -146,7 +146,9 @@ class DiagnosticTests(unittest.TestCase):
         self.assertIn(
             "1. Prioritize POS and online inventory synchronization.", report
         )
-        self.assertIn("connect the highest-volume sales channel first", report)
+        self.assertIn(
+            "one reliable inventory count that every sales channel uses", report
+        )
         self.assertIn("Business name: Example Store", report)
         self.assertIn("Inventory synchronization: Needs attention (No)", report)
         self.assertIn("MODERNIZATION ACTION PLAN", report)

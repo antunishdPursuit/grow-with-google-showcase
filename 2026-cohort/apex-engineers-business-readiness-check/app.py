@@ -147,9 +147,11 @@ if submitted:
 
                 if priorities:
                     _, highest_priority = priorities[0]
-                    st.subheader(f"Highest priority: {highest_priority.label}")
-                    st.write(highest_priority.explanation)
-                    st.info(highest_priority.recommendation)
+                    st.subheader(f"Start here: {highest_priority.label}")
+                    st.write(
+                        "This area has the highest project-defined weight "
+                        f"({highest_priority.weight}) among the gaps you reported."
+                    )
                 else:
                     st.success(
                         "No priority gaps were identified from the answers provided."

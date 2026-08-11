@@ -32,7 +32,7 @@ def test_golden_path_displays_score_priority_and_download():
     assert not app.exception
     assert [metric.value for metric in app.metric] == ["66.7%", "High"]
     assert any(
-        heading.value == "Highest priority: Inventory synchronization"
+        heading.value == "Start here: Inventory synchronization"
         for heading in app.subheader
     )
     assert len(app.get("download_button")) == 1
@@ -58,7 +58,12 @@ def test_golden_path_displays_breakdown_and_modernization_plan():
     assert "This week" in rendered_markdown
     assert "Next 30 days" in rendered_markdown
     assert "How to measure progress" in rendered_markdown
-    assert "connect the highest-volume sales channel first" in rendered_markdown
+    assert "highest project-defined weight (5)" in rendered_markdown
+    assert "one reliable inventory count that every sales channel uses" in rendered_markdown
+    assert rendered_markdown.count(
+        "Disconnected inventory systems can cause incorrect stock counts, "
+        "overselling, and manual reconciliation."
+    ) == 1
     assert "Questions to ask software providers" in [
         item.label for item in app.expander
     ]
