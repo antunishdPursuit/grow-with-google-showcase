@@ -204,6 +204,51 @@ hr {
     color: var(--brc-ink);
 }
 
+[class*="st-key-area_"] [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-action_plan [data-testid="stVerticalBlockBorderWrapper"] {
+    border-color: #ede9fe;
+    border-radius: 0.75rem;
+    background: #ffffff;
+}
+
+.brc-area-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.75rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.brc-area-ready {
+    border-color: #86efac;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.brc-area-attention {
+    border-color: #fdba74;
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+.brc-area-not-applicable {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.st-key-action_plan {
+    margin-bottom: 1rem;
+}
+
+.st-key-action_plan [data-testid="stVerticalBlockBorderWrapper"] {
+    background: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
+}
+
 [data-testid="stDownloadButton"] button,
 [data-testid="stDownloadButton"] button p {
     min-height: 2.75rem;
@@ -264,6 +309,10 @@ hr {
 
     [data-testid="stMetric"] {
         min-height: auto;
+    }
+
+    [class*="st-key-area_"] [data-testid="stHorizontalBlock"] {
+        flex-direction: column;
     }
 
     [data-testid="stDownloadButton"] button {

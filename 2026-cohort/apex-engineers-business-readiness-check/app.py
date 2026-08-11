@@ -8,7 +8,10 @@ from diagnostic import (
     NOT_APPLICABLE,
     NO,
     QUESTIONS,
+    SECURITY_CHECKPOINTS,
     YES,
+    build_modernization_plan,
+    build_readiness_breakdown,
     calculate_risk,
     find_priorities,
     generate_report,
@@ -88,6 +91,8 @@ if submitted:
         completed_answers = {key: str(answer) for key, answer in answers.items()}
         result = calculate_risk(completed_answers)
         priorities = find_priorities(completed_answers)
+        breakdown = build_readiness_breakdown(completed_answers)
+        action_plan = build_modernization_plan(completed_answers)
 
         st.divider()
         with st.container(key="results_panel", border=True):
@@ -127,6 +132,28 @@ if submitted:
                         "No priority gaps were identified from the answers provided."
                     )
 
+            st.subheader("Readiness breakdown")
+            st.write(
+                "Review what is working, what needs attention, and what was "
+                "excluded from your score."
+            )
+            status_classes = {
+                "Ready": "ready",
+                "Needs attention": "attention",
+                "Not applicable": "not-applicable",
+            }
+            for area in breakdown:
+                with st.container(key=f"area_{area.key}", border=True):
+                    label_column, status_column = st.columns([3, 2])
+                    label_column.markdown(f"**{area.question.label}**")
+                    status_class = status_classes[area.status]
+                    status_column.markdown(
+                        f'<div class="brc-area-status brc-area-{status_class}">'
+                        f"{area.status}</div>",
+                        unsafe_allow_html=True,
+                    )
+                    st.write(area.summary)
+
             st.subheader("Recommended next steps")
             if priorities:
                 for index, (_, question) in enumerate(priorities, start=1):
@@ -136,6 +163,42 @@ if submitted:
                 st.write("Complete at least one applicable area to receive recommendations.")
             else:
                 st.write("Continue monitoring these areas as the business changes.")
+
+            st.subheader("Your modernization plan")
+            if action_plan:
+                with st.container(key="action_plan", border=True):
+                    st.markdown("#### This week")
+                    for index, step in enumerate(action_plan, start=1):
+                        st.markdown(f"**{index}. {step.label}**")
+                        st.write(step.immediate_action)
+
+                    st.markdown("#### Next 30 days")
+                    for index, step in enumerate(action_plan, start=1):
+                        st.markdown(f"**{index}. {step.label}**")
+                        st.write(step.thirty_day_action)
+
+                    st.markdown("#### How to measure progress")
+                    for index, step in enumerate(action_plan, start=1):
+                        st.markdown(f"**{index}. {step.label}**")
+                        st.write(step.success_measure)
+            elif result.risk_percentage is None:
+                st.write("Complete at least one applicable area to receive an action plan.")
+            else:
+                st.success(
+                    "No immediate modernization actions were generated because "
+                    "no gaps were identified."
+                )
+
+            with st.expander("Security checkpoints for any system change"):
+                for checkpoint in SECURITY_CHECKPOINTS:
+                    st.markdown(f"- {checkpoint}")
+
+            if action_plan:
+                with st.expander("Questions to ask software providers"):
+                    for step in action_plan:
+                        st.markdown(f"**{step.label}**")
+                        for provider_question in step.provider_questions:
+                            st.markdown(f"- {provider_question}")
 
             with st.expander("Review all answers"):
                 for key, question in QUESTIONS.items():

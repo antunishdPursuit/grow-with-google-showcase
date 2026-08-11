@@ -38,6 +38,34 @@ def test_golden_path_displays_score_priority_and_download():
     assert len(app.get("download_button")) == 1
 
 
+def test_golden_path_displays_breakdown_and_modernization_plan():
+    app = load_app()
+    answers = ["No", "Yes", "No", "Not applicable"]
+    for radio, answer in zip(app.radio, answers):
+        radio.set_value(answer)
+
+    app.button[0].click().run()
+
+    assert not app.exception
+    subheadings = [heading.value for heading in app.subheader]
+    assert "Readiness breakdown" in subheadings
+    assert "Your modernization plan" in subheadings
+
+    rendered_markdown = "\n".join(item.value for item in app.markdown)
+    assert "Needs attention" in rendered_markdown
+    assert "Ready" in rendered_markdown
+    assert "Not applicable" in rendered_markdown
+    assert "This week" in rendered_markdown
+    assert "Next 30 days" in rendered_markdown
+    assert "How to measure progress" in rendered_markdown
+    assert "Questions to ask software providers" in [
+        item.label for item in app.expander
+    ]
+    assert "Security checkpoints for any system change" in [
+        item.label for item in app.expander
+    ]
+
+
 def test_each_risk_level_has_a_visible_text_label():
     scenarios = {
         "Low risk": ["Yes", "Yes", "Yes", "No"],
