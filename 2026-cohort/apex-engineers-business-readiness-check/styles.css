@@ -110,7 +110,8 @@ a {
     line-height: 1.5;
 }
 
-[data-testid="stFormSubmitButton"] button {
+[data-testid="stFormSubmitButton"] button,
+[data-testid="stFormSubmitButton"] button p {
     min-height: 2.75rem;
     margin-top: 0.75rem;
     padding-inline: 1.5rem;
@@ -203,7 +204,8 @@ hr {
     color: var(--brc-ink);
 }
 
-[data-testid="stDownloadButton"] button {
+[data-testid="stDownloadButton"] button,
+[data-testid="stDownloadButton"] button p {
     min-height: 2.75rem;
     border-color: var(--brc-amethyst-deep);
     border-radius: 0.5rem;
@@ -212,7 +214,8 @@ hr {
     font-weight: 600;
 }
 
-[data-testid="stDownloadButton"] button:hover {
+[data-testid="stDownloadButton"] button:hover,
+[data-testid="stDownloadButton"] button:hover p {
     border-color: #5b21b6;
     background: var(--brc-lavender);
     color: #5b21b6;
