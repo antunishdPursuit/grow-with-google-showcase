@@ -91,15 +91,14 @@ database, file uploads, external APIs, or actual business-system integrations.
 Automated tests cover all-Yes and all-No results, mixed weights, Not applicable
 handling, all-not-applicable behavior, priority ordering, readiness statuses,
 action-plan ordering, visible risk labels, missing and invalid answers,
-optional-text normalization, and report consistency. Public deployment adds a
-second verification boundary: after deployment, the complete user flow and
-report download must be repeated on the live application.
+optional-text normalization, and report consistency. The final test suite
+contains 22 automated tests.
 
-The final test suite contains 22 automated tests. The deployed Render application
-was also checked at desktop and mobile widths. A mixed assessment produced 8 of
-12 applicable risk points, a 66.7% High-risk result, inventory synchronization as
-the highest priority, matching business-context guidance, and a complete
-downloadable report. No browser errors appeared during the deployed check.
+The public Render deployment was verified at desktop and mobile widths. A mixed
+assessment produced 8 of 12 applicable risk points, a 66.7% High-risk result,
+inventory synchronization as the highest priority, matching business-context
+guidance, and a complete downloadable report. No browser errors appeared during
+the deployed check.
 
 The security approach minimizes collected information. Business details are
 optional and length-limited, answers use fixed choices, report text is

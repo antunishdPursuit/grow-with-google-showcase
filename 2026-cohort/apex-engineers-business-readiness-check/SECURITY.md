@@ -27,9 +27,9 @@ and can be left blank.
   multifactor authentication, least-privilege access, backups, controlled
   testing, data export, deletion, and incident support.
 
-## Deployment Requirements
+## Deployment and Release Safeguards
 
-Before public deployment:
+For the public deployment and later releases:
 
 - Use an HTTPS-enabled hosting provider.
 - Deploy only from the intended GitHub repository and branch.
