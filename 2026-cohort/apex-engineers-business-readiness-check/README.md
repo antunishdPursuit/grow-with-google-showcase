@@ -19,20 +19,29 @@ research: inventory synchronization, payments and checkout, customer email
 capture, and online booking. It gives a non-technical owner a weighted risk
 result and practical next steps in a few minutes.
 
+Two optional, non-scored questions ask how the business manages operational
+information and how often it repeats data entry. These answers personalize the
+guidance for owner-operated and small-team workflows without changing the
+research-derived score.
+
 The project does not replace a point-of-sale system, process payments, schedule
 appointments, or perform a formal security or compliance audit.
 
 ## How the Solution Works
 
 1. The owner optionally enters a business name and type.
-2. The owner answers four questions with **Yes**, **No**, or **Not applicable**.
-3. Python applies the research-derived question weights: 5, 4, 3, and 2.
-4. The application calculates the applicable risk percentage.
-5. Failed areas are ordered from highest to lowest weight.
-6. The owner receives an area-by-area readiness breakdown.
-7. Python creates a phased modernization plan with security checks, success
+2. The owner can answer two optional questions about current administrative
+   methods and repeated data entry.
+3. The owner answers four scored questions with **Yes**, **No**, or **Not
+   applicable**.
+4. Python applies the research-derived question weights: 5, 4, 3, and 2.
+5. The application calculates the applicable risk percentage.
+6. Failed areas are ordered from highest to lowest weight.
+7. The owner receives an area-by-area readiness breakdown and non-scored
+   business-context guidance.
+8. Python creates a phased modernization plan with security checks, success
    measures, and questions to ask software providers.
-8. The owner can download the complete result as a plain-text report.
+9. The owner can download the complete result as a plain-text report.
 
 The risk categories are project-designed interpretation bands:
 
@@ -50,6 +59,8 @@ the tool returns no score instead of reporting zero risk.
 ## Current Features
 
 - Four-question Streamlit assessment.
+- Two optional, non-scored questions about operational tools and repeated data
+  entry.
 - Weighted scoring with applicable-question handling.
 - Highest-priority gap identification.
 - Ordered modernization recommendations.
@@ -62,10 +73,11 @@ the tool returns no score instead of reporting zero risk.
 
 ## Project Status
 
-The expanded application is built and committed locally. All 18 automated tests
-pass, and the mixed-answer assessment flow has been verified on localhost.
-Public deployment, deployed-environment verification, the walkthrough video,
-push, and pull request remain incomplete.
+The expanded application is built and committed locally. All 21 automated tests
+pass. The mixed-answer assessment and optional business-context flow were
+verified on localhost at desktop and mobile widths. Public deployment,
+deployed-environment verification, the walkthrough video, push, and pull request
+remain incomplete.
 
 ## Team
 
@@ -162,6 +174,10 @@ used to frame the challenges of small retailers.
 The dataset is an illustrative e-commerce case study. It does not prove that
 every traditional storefront experiences the same rates or problems. The tool
 therefore provides general guidance rather than guaranteed outcomes.
+
+The two optional business-context questions are project-designed prompts. They
+personalize guidance but do not add risk points or claim to be validated by the
+dataset.
 
 - [Project report and diagnostic criteria](https://docs.google.com/document/d/1OFAOKCO0PFtaKKfRQRJTysoO7rNMozFNBWTMYOUmOcI/edit)
 - [MMC BUILD Project Outline](https://docs.google.com/document/d/1InNWpho03JfFCXKAuMmXqKNMXpoGoRerdZamuqvCQ2M/edit?tab=t.0)

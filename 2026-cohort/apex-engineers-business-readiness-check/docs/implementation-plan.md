@@ -11,6 +11,7 @@ result, identify the highest-priority gap, and download recommended next steps.
 The minimum version includes:
 
 - Four fixed diagnostic questions.
+- Two optional, non-scored business-context questions.
 - Yes, No, and Not applicable answers.
 - Weighted scoring and project-designed risk categories.
 - Prioritized recommendations.
@@ -34,10 +35,12 @@ actual system integrations are outside this version.
    general-guidance disclaimer.
 5. Complete the README, security note, project summary, and MIT license.
 6. Add and test the readiness breakdown and phased modernization plan.
-7. Test the complete local user journey and report download.
-8. Deploy publicly and repeat the complete user journey on the live URL.
-9. Record the walkthrough and add its link to the README.
-10. Review the final repository, push the branch, and open the required pull
+7. Add optional operating-method and repeated-entry guidance without changing
+   the weighted score.
+8. Test the complete local user journey and report download.
+9. Deploy publicly and repeat the complete user journey on the live URL.
+10. Record the walkthrough and add its link to the README.
+11. Review the final repository, push the branch, and open the required pull
    request without merging it.
 
 ## Timeline
@@ -64,6 +67,7 @@ actual system integrations are outside this version.
 | Risk | Mitigation |
 | --- | --- |
 | Arbitrary thresholds appear scientifically validated | Label them as project-designed categories in the app and documentation. |
+| Optional context answers appear validated or alter risk | Label them as non-scored, keep them outside the calculation, and test that the score is unchanged. |
 | Not applicable answers distort the score | Exclude their weights from the denominator and test the calculation. |
 | Every answer is not applicable | Return no score and ask for at least one applicable area. |
 | User enters sensitive information | Make business details optional, prohibit sensitive data, and avoid persistent storage. |

@@ -48,6 +48,12 @@ are project-designed interpretation categories rather than externally validated
 standards. If every answer is Not applicable, the application returns no score
 instead of presenting a misleading zero-risk result.
 
+Two optional questions ask how the owner manages orders, inventory, and customer
+information and how often information is copied between systems. These prompts
+better represent the manual and fragmented workflows described in the problem
+statement. They personalize the recommendations but do not affect the weighted
+score and are not presented as dataset-validated diagnostic criteria.
+
 Failed areas are ordered by weight. The application explains the highest
 priority and gives every area a Ready, Needs attention, or Not applicable
 status. It then creates project-designed this-week and 30-day actions, success
