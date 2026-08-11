@@ -1,5 +1,7 @@
 """Streamlit interface for the Apex Engineers Business Readiness Check."""
 
+from pathlib import Path
+
 import streamlit as st
 
 from diagnostic import (
@@ -19,6 +21,19 @@ st.set_page_config(
     layout="centered",
 )
 
+
+def load_styles() -> None:
+    """Load the project stylesheet from the application directory."""
+    stylesheet = Path(__file__).with_name("styles.css")
+    st.markdown(
+        f"<style>{stylesheet.read_text(encoding='utf-8')}</style>",
+        unsafe_allow_html=True,
+    )
+
+
+load_styles()
+
+st.markdown('<div class="brc-brand-line" aria-hidden="true"></div>', unsafe_allow_html=True)
 st.title("Business Readiness Check")
 st.write(
     "Answer four questions to identify technology gaps and receive a "
