@@ -1,5 +1,11 @@
 # Business Readiness Check: Research, Solution, and Implementation Summary
 
+**Team:** Apex Engineers
+
+**UN SDG:** [Goal 9: Industry, Innovation, and Infrastructure](https://sdgs.un.org/goals/goal9)
+
+**Live application:** [Business Readiness Check](https://business-readiness-check.onrender.com/)
+
 ## Problem and Research
 
 Traditional small retailers can depend on disconnected administrative tools and
@@ -19,6 +25,13 @@ information. The project report identified four operational pain points:
 3. Customer profiles that cannot support follow-up because email information is
    missing or unverified.
 4. Manual scheduling that does not allow customers to book online at any time.
+
+Within the analyzed dataset, the team report recorded 12% of the catalog as at
+risk of stockouts, more than 10,000 digital-wallet transactions, and 8.65% of
+customer profiles with missing or unverified email addresses. It also identified
+Health & Beauty as a high-revenue category where online scheduling could reduce
+service friction. These findings informed the diagnostic areas but do not prove
+that every small retailer experiences the same conditions.
 
 Supporting articles and small-business surveys helped frame the broader problem.
 The e-commerce dataset is an illustrative case study, not a representative
@@ -82,6 +95,12 @@ optional-text normalization, and report consistency. Public deployment adds a
 second verification boundary: after deployment, the complete user flow and
 report download must be repeated on the live application.
 
+The final test suite contains 21 automated tests. The deployed Render application
+was also checked at desktop and mobile widths. A mixed assessment produced 8 of
+12 applicable risk points, a 66.7% High-risk result, inventory synchronization as
+the highest priority, matching business-context guidance, and a complete
+downloadable report. No browser errors appeared during the deployed check.
+
 The security approach minimizes collected information. Business details are
 optional and length-limited, answers use fixed choices, report text is
 normalized, and responses are not intentionally stored after the active
@@ -93,7 +112,11 @@ customer records, or other sensitive information.
 The project turns the team's analysis into a small, explainable automation tool
 that a non-technical owner can use in a few minutes. It now connects the score
 to a practical modernization sequence instead of stopping at a diagnostic
-label. Future work could add optional data-file checks, accounting and shipping
+label. The public application, source code, tests, documentation, security note,
+and MIT license are complete. The remaining submission work is the combined
+team walkthrough video and the final open pull request.
+
+Future work could add optional data-file checks, accounting and shipping
 questions, researched vendor comparisons, and user testing. Those features
 remain outside the current build so the submitted application stays focused,
 testable, and clear about its evidence limits.
@@ -103,3 +126,4 @@ testable, and clear about its evidence limits.
 - [Project report and diagnostic criteria](https://docs.google.com/document/d/1OFAOKCO0PFtaKKfRQRJTysoO7rNMozFNBWTMYOUmOcI/edit)
 - [MMC BUILD Project Outline](https://docs.google.com/document/d/1InNWpho03JfFCXKAuMmXqKNMXpoGoRerdZamuqvCQ2M/edit?tab=t.0)
 - [UN Sustainable Development Goal 9](https://sdgs.un.org/goals/goal9)
+- [Deployed Business Readiness Check](https://business-readiness-check.onrender.com/)
