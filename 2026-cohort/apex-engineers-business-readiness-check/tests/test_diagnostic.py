@@ -6,6 +6,9 @@ from diagnostic import (
     NO,
     NOT_APPLICABLE,
     YES,
+    SECURITY_CHECKPOINTS,
+    build_modernization_plan,
+    build_readiness_breakdown,
     calculate_risk,
     clean_user_text,
     find_priorities,
@@ -76,6 +79,39 @@ class DiagnosticTests(unittest.TestCase):
             ["inventory", "customers", "booking"],
         )
 
+    def test_readiness_breakdown_covers_every_answer_state(self):
+        answers = {
+            "inventory": NO,
+            "payments": YES,
+            "customers": NO,
+            "booking": NOT_APPLICABLE,
+        }
+        breakdown = build_readiness_breakdown(answers)
+        self.assertEqual(
+            [area.status for area in breakdown],
+            ["Needs attention", "Ready", "Needs attention", "Not applicable"],
+        )
+        self.assertIn("overselling", breakdown[0].summary)
+        self.assertIn("excluded from the score", breakdown[3].summary)
+
+    def test_modernization_plan_is_prioritized_and_actionable(self):
+        answers = {
+            "inventory": NO,
+            "payments": YES,
+            "customers": NO,
+            "booking": NOT_APPLICABLE,
+        }
+        plan = build_modernization_plan(answers)
+        self.assertEqual([step.key for step in plan], ["inventory", "customers"])
+        self.assertIn("re-enter quantities", plan[0].immediate_action)
+        self.assertIn("small product set", plan[0].thirty_day_action)
+        self.assertIn("stock discrepancies", plan[0].success_measure)
+        self.assertEqual(len(plan[0].provider_questions), 3)
+
+    def test_all_ready_answers_need_no_modernization_steps(self):
+        answers = {key: YES for key in ("inventory", "payments", "customers", "booking")}
+        self.assertEqual(build_modernization_plan(answers), [])
+
     def test_missing_answer_is_rejected(self):
         answers = {"inventory": YES, "payments": YES, "customers": YES}
         with self.assertRaisesRegex(ValueError, "Missing answers"):
@@ -105,6 +141,12 @@ class DiagnosticTests(unittest.TestCase):
             "1. Prioritize POS and online inventory synchronization.", report
         )
         self.assertIn("Business name: Example Store", report)
+        self.assertIn("Inventory synchronization: Needs attention (No)", report)
+        self.assertIn("MODERNIZATION ACTION PLAN", report)
+        self.assertIn("NEXT 30 DAYS", report)
+        self.assertIn("HOW TO MEASURE PROGRESS", report)
+        self.assertIn("QUESTIONS TO ASK PROVIDERS", report)
+        self.assertIn(SECURITY_CHECKPOINTS[0], report)
         self.assertIn("not a formal security", report)
 
     def test_optional_report_text_is_normalized_and_limited(self):

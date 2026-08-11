@@ -21,6 +21,10 @@ class Question:
     weight: int
     recommendation: str
     explanation: str
+    immediate_action: str
+    thirty_day_action: str
+    success_measure: str
+    provider_questions: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -31,6 +35,38 @@ class AssessmentResult:
     applicable_points: int
     risk_percentage: float | None
     risk_level: str
+
+
+@dataclass(frozen=True)
+class AreaReadiness:
+    """One area's answer translated into a plain-language readiness status."""
+
+    key: str
+    question: Question
+    answer: str
+    status: str
+    summary: str
+
+
+@dataclass(frozen=True)
+class ModernizationStep:
+    """Action-plan content for one failed diagnostic area."""
+
+    key: str
+    label: str
+    immediate_action: str
+    thirty_day_action: str
+    success_measure: str
+    provider_questions: tuple[str, ...]
+
+
+SECURITY_CHECKPOINTS = (
+    "Require multifactor authentication for administrator accounts.",
+    "Give each employee only the access needed for their work and remove stale accounts.",
+    "Export or back up important business data before changing systems.",
+    "Test changes with sample records or transactions before a full switch.",
+    "Confirm how to export or delete data and how the provider handles security incidents.",
+)
 
 
 QUESTIONS: dict[str, Question] = {
@@ -46,6 +82,23 @@ QUESTIONS: dict[str, Question] = {
             "Disconnected inventory systems can cause incorrect stock counts, "
             "overselling, and manual reconciliation."
         ),
+        immediate_action=(
+            "List every system that changes stock counts and mark where staff "
+            "re-enter quantities by hand."
+        ),
+        thirty_day_action=(
+            "Test one POS-to-store synchronization with a small product set and "
+            "define how staff will handle synchronization failures."
+        ),
+        success_measure=(
+            "Fewer stock discrepancies, overselling incidents, and manual "
+            "reconciliations."
+        ),
+        provider_questions=(
+            "Does inventory synchronize in both directions, and how often?",
+            "What happens when synchronization fails or products do not match?",
+            "Can the business export complete inventory and transaction data?",
+        ),
     ),
     "payments": Question(
         label="Payments and checkout",
@@ -54,6 +107,23 @@ QUESTIONS: dict[str, Question] = {
         recommendation="Add digital-wallet support and guest checkout.",
         explanation=(
             "Limited checkout options can create avoidable friction for customers."
+        ),
+        immediate_action=(
+            "Review checkout on a phone and computer and record which wallet, "
+            "guest-checkout, or payment steps are unavailable."
+        ),
+        thirty_day_action=(
+            "Enable and test selected checkout options with test transactions "
+            "before making them available to every customer."
+        ),
+        success_measure=(
+            "Fewer checkout steps, payment-related support requests, and abandoned "
+            "purchases."
+        ),
+        provider_questions=(
+            "Which transaction, refund, dispute, and wallet fees apply?",
+            "How are payment data and checkout responsibilities divided?",
+            "Can the business export transaction and refund records?",
         ),
     ),
     "customers": Question(
@@ -65,6 +135,23 @@ QUESTIONS: dict[str, Question] = {
             "Missing contact information limits customer follow-up and retention "
             "workflows."
         ),
+        immediate_action=(
+            "Map where an email address can be requested with consent and how "
+            "duplicate or invalid addresses are handled."
+        ),
+        thirty_day_action=(
+            "Pilot a consent-based capture and follow-up process and assign who "
+            "reviews opt-outs and address errors."
+        ),
+        success_measure=(
+            "A higher share of valid, permissioned customer emails and fewer "
+            "manual follow-up steps."
+        ),
+        provider_questions=(
+            "How does the tool record consent, opt-outs, and deletion requests?",
+            "Which staff roles can view or export customer information?",
+            "Can the business export and remove customer data when needed?",
+        ),
     ),
     "booking": Question(
         label="Online booking",
@@ -74,6 +161,22 @@ QUESTIONS: dict[str, Question] = {
         explanation=(
             "Manual scheduling can prevent customers from booking outside business "
             "hours."
+        ),
+        immediate_action=(
+            "Document the current scheduling steps, available hours, cancellation "
+            "rules, and information staff need for each appointment."
+        ),
+        thirty_day_action=(
+            "Pilot online booking for a limited appointment type and test "
+            "confirmations, cancellations, and time-zone handling."
+        ),
+        success_measure=(
+            "Fewer scheduling messages, missed appointments, and duplicate bookings."
+        ),
+        provider_questions=(
+            "How are staff access, calendar connections, and customer details secured?",
+            "How does the system handle confirmations, cancellations, and time zones?",
+            "Can the business export appointments and customer information?",
         ),
     ),
 }
@@ -159,6 +262,64 @@ def find_priorities(answers: Mapping[str, str]) -> list[tuple[str, Question]]:
     return sorted(failed, key=lambda item: item[1].weight, reverse=True)
 
 
+def build_readiness_breakdown(
+    answers: Mapping[str, str],
+) -> list[AreaReadiness]:
+    """Translate every answer into an ordered status and explanation."""
+
+    _validate_answers(answers)
+    statuses = {
+        YES: "Ready",
+        NO: "Needs attention",
+        NOT_APPLICABLE: "Not applicable",
+    }
+    breakdown = []
+
+    for key, question in QUESTIONS.items():
+        answer = answers[key]
+        if answer == YES:
+            summary = (
+                "This capability is reported as available. Continue monitoring it "
+                "as the business and its systems change."
+            )
+        elif answer == NO:
+            summary = question.explanation
+        else:
+            summary = (
+                "This area was excluded from the score because it was marked "
+                "Not applicable."
+            )
+        breakdown.append(
+            AreaReadiness(
+                key=key,
+                question=question,
+                answer=answer,
+                status=statuses[answer],
+                summary=summary,
+            )
+        )
+
+    return breakdown
+
+
+def build_modernization_plan(
+    answers: Mapping[str, str],
+) -> list[ModernizationStep]:
+    """Create ordered action-plan steps for areas answered No."""
+
+    return [
+        ModernizationStep(
+            key=key,
+            label=question.label,
+            immediate_action=question.immediate_action,
+            thirty_day_action=question.thirty_day_action,
+            success_measure=question.success_measure,
+            provider_questions=question.provider_questions,
+        )
+        for key, question in find_priorities(answers)
+    ]
+
+
 def generate_report(
     answers: Mapping[str, str],
     result: AssessmentResult,
@@ -169,6 +330,8 @@ def generate_report(
 
     _validate_answers(answers)
     priorities = find_priorities(answers)
+    breakdown = build_readiness_breakdown(answers)
+    action_plan = build_modernization_plan(answers)
     name = clean_user_text(business_name, max_length=80) or "Not provided"
     kind = clean_user_text(business_type, max_length=60) or "Not provided"
     lines = [
@@ -198,8 +361,11 @@ def generate_report(
         )
 
     lines.extend(["", "AREA RESULTS", "------------"])
-    for key, question in QUESTIONS.items():
-        lines.append(f"{question.label}: {answers[key]}")
+    for area in breakdown:
+        lines.append(
+            f"{area.question.label}: {area.status} ({area.answer})"
+        )
+        lines.append(f"   {area.summary}")
 
     lines.extend(["", "RECOMMENDED NEXT STEPS", "----------------------"])
     if priorities:
@@ -210,6 +376,37 @@ def generate_report(
         lines.append("Complete at least one applicable area to receive recommendations.")
     else:
         lines.append("No priority gaps were identified from the answers provided.")
+
+    lines.extend(["", "MODERNIZATION ACTION PLAN", "-------------------------"])
+    if action_plan:
+        lines.extend(["", "THIS WEEK", "---------"])
+        for index, step in enumerate(action_plan, start=1):
+            lines.append(f"{index}. {step.label}: {step.immediate_action}")
+
+        lines.extend(["", "NEXT 30 DAYS", "------------"])
+        for index, step in enumerate(action_plan, start=1):
+            lines.append(f"{index}. {step.label}: {step.thirty_day_action}")
+
+        lines.extend(["", "HOW TO MEASURE PROGRESS", "-----------------------"])
+        for index, step in enumerate(action_plan, start=1):
+            lines.append(f"{index}. {step.label}: {step.success_measure}")
+
+        lines.extend(["", "QUESTIONS TO ASK PROVIDERS", "--------------------------"])
+        for step in action_plan:
+            lines.append(f"{step.label}:")
+            for question in step.provider_questions:
+                lines.append(f"- {question}")
+    elif result.risk_percentage is None:
+        lines.append("Complete at least one applicable area to receive an action plan.")
+    else:
+        lines.append(
+            "No immediate modernization actions were generated because no gaps "
+            "were identified."
+        )
+
+    lines.extend(["", "SECURITY CHECKPOINTS", "--------------------"])
+    for checkpoint in SECURITY_CHECKPOINTS:
+        lines.append(f"- {checkpoint}")
 
     lines.extend(
         [
