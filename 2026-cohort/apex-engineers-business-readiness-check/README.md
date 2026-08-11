@@ -29,7 +29,10 @@ appointments, or perform a formal security or compliance audit.
 3. Python applies the research-derived question weights: 5, 4, 3, and 2.
 4. The application calculates the applicable risk percentage.
 5. Failed areas are ordered from highest to lowest weight.
-6. The owner receives recommendations and can download a plain-text report.
+6. The owner receives an area-by-area readiness breakdown.
+7. Python creates a phased modernization plan with security checks, success
+   measures, and questions to ask software providers.
+8. The owner can download the complete result as a plain-text report.
 
 The risk categories are project-designed interpretation bands:
 
@@ -50,15 +53,19 @@ the tool returns no score instead of reporting zero risk.
 - Weighted scoring with applicable-question handling.
 - Highest-priority gap identification.
 - Ordered modernization recommendations.
-- Downloadable plain-text results report.
+- Readiness status and explanation for every assessed area.
+- This-week and 30-day modernization actions.
+- Success measures, security checkpoints, and provider questions.
+- Downloadable plain-text report containing the complete action plan.
 - Input normalization, safe errors, a privacy notice, and a disclaimer.
 - Automated tests for scoring, invalid input, priorities, and report output.
 
 ## Project Status
 
-The minimum application is built, and all automated tests pass. A final
-localhost review, public deployment, walkthrough video, commit, push, and pull
-request remain incomplete.
+The expanded application is built and committed locally. All 18 automated tests
+pass, and the mixed-answer assessment flow has been verified on localhost.
+Public deployment, deployed-environment verification, the walkthrough video,
+push, and pull request remain incomplete.
 
 ## Team
 
@@ -83,11 +90,15 @@ research and analysis supplied the problem framing and diagnostic criteria.
 apex-engineers-business-readiness-check/
 |-- app.py
 |-- diagnostic.py
+|-- styles.css
+|-- .streamlit/
+|   `-- config.toml
 |-- requirements.txt
 |-- README.md
 |-- SECURITY.md
 |-- LICENSE
 |-- tests/
+|   |-- test_app.py
 |   `-- test_diagnostic.py
 `-- docs/
     |-- implementation-plan.md
@@ -160,7 +171,6 @@ therefore provides general guidance rather than guaranteed outcomes.
 - Optional inventory and customer-data file checks.
 - More diagnostic areas, including accounting and shipping.
 - Carefully researched vendor comparisons.
-- A longer modernization roadmap.
 - User testing with small-business owners.
 
 These ideas are outside the current submission scope.

@@ -23,6 +23,9 @@ and can be left blank.
 - Error details and private answers are not intentionally written to logs.
 - Streamlit secrets, environment files, caches, and logs are excluded from Git.
 - The user interface includes a privacy notice and results disclaimer.
+- The generated modernization plan includes general checkpoints for
+  multifactor authentication, least-privilege access, backups, controlled
+  testing, data export, deletion, and incident support.
 
 ## Deployment Requirements
 
@@ -40,12 +43,13 @@ Before public deployment:
 
 This is an educational readiness tool. It is not a penetration test, formal
 security assessment, compliance review, financial audit, or guarantee that a
-business is secure. Its recommendations must be evaluated for the business's
-actual systems, risks, budget, and legal obligations.
+business is secure. The security checkpoints are general project guidance, not
+a NIST assessment or validated control framework. All recommendations must be
+evaluated for the business's actual systems, risks, budget, and legal
+obligations.
 
 ## Reporting a Problem
 
 Do not submit confidential business information in a public GitHub issue. Use
 the repository's private maintainer contact method if one is added. Until then,
 describe only non-sensitive reproduction steps in the pull-request discussion.
-

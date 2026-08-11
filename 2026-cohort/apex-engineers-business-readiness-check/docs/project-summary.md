@@ -49,17 +49,20 @@ standards. If every answer is Not applicable, the application returns no score
 instead of presenting a misleading zero-risk result.
 
 Failed areas are ordered by weight. The application explains the highest
-priority, lists recommended actions, and creates a downloadable plain-text
-report. The result is intended to start a modernization conversation. It is not
-a formal technology, financial, compliance, or cybersecurity audit.
+priority and gives every area a Ready, Needs attention, or Not applicable
+status. It then creates project-designed this-week and 30-day actions, success
+measures, security checkpoints, and questions the owner can ask software
+providers. The downloadable plain-text report contains the same breakdown and
+plan. The result is intended to start a modernization conversation. It is not a
+formal technology, financial, compliance, or cybersecurity audit.
 
 ## Implementation
 
 The scoring rules are separated from the Streamlit interface in
 `diagnostic.py`. This module defines the questions and provides functions for
-answer validation, scoring, risk classification, priority ordering, text
-normalization, and report generation. Separating these rules keeps the central
-logic understandable and testable.
+answer validation, scoring, risk classification, priority ordering, readiness
+breakdowns, action-plan generation, text normalization, and report generation.
+Separating these rules keeps the central logic understandable and testable.
 
 `app.py` provides one user journey: read the privacy notice, optionally identify
 the business, answer the questions, generate the result, review recommendations,
@@ -67,10 +70,11 @@ and download the report. The first version does not use authentication, a
 database, file uploads, external APIs, or actual business-system integrations.
 
 Automated tests cover all-Yes and all-No results, mixed weights, Not applicable
-handling, all-not-applicable behavior, priority ordering, missing and invalid
-answers, optional-text normalization, and report consistency. Public deployment
-adds a second verification boundary: after deployment, the complete user flow
-and report download must be repeated on the live application.
+handling, all-not-applicable behavior, priority ordering, readiness statuses,
+action-plan ordering, visible risk labels, missing and invalid answers,
+optional-text normalization, and report consistency. Public deployment adds a
+second verification boundary: after deployment, the complete user flow and
+report download must be repeated on the live application.
 
 The security approach minimizes collected information. Business details are
 optional and length-limited, answers use fixed choices, report text is
@@ -81,11 +85,12 @@ customer records, or other sensitive information.
 ## Outcome and Next Steps
 
 The project turns the team's analysis into a small, explainable automation tool
-that a non-technical owner can use in a few minutes. Future work could add
-optional data-file checks, accounting and shipping questions, researched vendor
-comparisons, and user testing. Those features remain outside the current build
-so the submitted application stays focused, testable, and clear about its
-evidence limits.
+that a non-technical owner can use in a few minutes. It now connects the score
+to a practical modernization sequence instead of stopping at a diagnostic
+label. Future work could add optional data-file checks, accounting and shipping
+questions, researched vendor comparisons, and user testing. Those features
+remain outside the current build so the submitted application stays focused,
+testable, and clear about its evidence limits.
 
 ## Sources
 

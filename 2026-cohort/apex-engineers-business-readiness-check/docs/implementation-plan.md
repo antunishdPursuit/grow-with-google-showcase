@@ -14,7 +14,10 @@ The minimum version includes:
 - Yes, No, and Not applicable answers.
 - Weighted scoring and project-designed risk categories.
 - Prioritized recommendations.
-- A plain-text report download.
+- Area-by-area readiness statuses and explanations.
+- This-week and 30-day modernization actions.
+- Success measures, security checkpoints, and provider questions.
+- A complete plain-text action-plan download.
 - Automated scoring tests.
 - Privacy, security, and evidence limitations.
 
@@ -30,10 +33,11 @@ actual system integrations are outside this version.
 4. Add privacy text, input limits, safe all-not-applicable behavior, and a
    general-guidance disclaimer.
 5. Complete the README, security note, project summary, and MIT license.
-6. Test the complete local user journey and report download.
-7. Deploy publicly and repeat the complete user journey on the live URL.
-8. Record the walkthrough and add its link to the README.
-9. Review the final repository, push the branch, and open the required pull
+6. Add and test the readiness breakdown and phased modernization plan.
+7. Test the complete local user journey and report download.
+8. Deploy publicly and repeat the complete user journey on the live URL.
+9. Record the walkthrough and add its link to the README.
+10. Review the final repository, push the branch, and open the required pull
    request without merging it.
 
 ## Timeline
@@ -76,8 +80,8 @@ The solution is ready for submission only when:
 - The local and deployed applications complete the full assessment flow.
 - Missing answers and all-not-applicable answers fail safely.
 - The downloaded report matches the displayed result.
+- The readiness breakdown and action plan match the submitted answers.
 - Documentation claims match observed behavior.
 - No secret, private data, cache, or local environment file is tracked.
 - The walkthrough is no longer than five minutes.
 - The final pull request is open against upstream `main` and remains unmerged.
-
