@@ -73,11 +73,10 @@ the tool returns no score instead of reporting zero risk.
 
 ## Project Status
 
-The expanded application is built and committed locally. All 21 automated tests
-pass. The mixed-answer assessment and optional business-context flow were
-verified on localhost at desktop and mobile widths. Public deployment,
-deployed-environment verification, the walkthrough video, push, and pull request
-remain incomplete.
+The expanded application is built, tested, and publicly deployed. All 21
+automated tests pass. The mixed-answer assessment, optional business-context
+flow, downloadable report, and mobile layout were verified in the deployed
+environment. The walkthrough video and final pull request remain incomplete.
 
 ## Team
 
@@ -157,8 +156,10 @@ python -m pytest -q
 
 ## Public Application
 
-Public deployment is planned. The verified application URL will be added here
-after deployment testing is complete.
+[Open the verified Business Readiness Check](https://business-readiness-check.onrender.com/)
+
+The application is hosted as one Render Web Service from the `apex-engineers`
+branch.
 
 ## Project Walkthrough Video
 
