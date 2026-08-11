@@ -7,9 +7,12 @@ import streamlit as st
 from diagnostic import (
     NOT_APPLICABLE,
     NO,
+    MANAGEMENT_METHODS,
+    MANUAL_COPY_FREQUENCIES,
     QUESTIONS,
     SECURITY_CHECKPOINTS,
     YES,
+    build_context_guidance,
     build_modernization_plan,
     build_readiness_breakdown,
     calculate_risk,
@@ -68,6 +71,22 @@ with st.form("readiness_assessment"):
         format_func=lambda value: "Select a business type" if not value else value,
     )
 
+    st.subheader("How the business works")
+    st.caption(
+        "These optional questions help tailor your recommendations. They do not "
+        "change the weighted technology risk score."
+    )
+    management_method = st.selectbox(
+        "How do you currently manage orders, inventory, and customer information?",
+        ["", *MANAGEMENT_METHODS],
+        format_func=lambda value: "Select a management method" if not value else value,
+    )
+    manual_copy_frequency = st.selectbox(
+        "How often do you enter or copy the same information into multiple systems?",
+        ["", *MANUAL_COPY_FREQUENCIES],
+        format_func=lambda value: "Select a frequency" if not value else value,
+    )
+
     st.subheader("Technology assessment")
     answers: dict[str, str | None] = {}
     for key, question in QUESTIONS.items():
@@ -93,6 +112,10 @@ if submitted:
         priorities = find_priorities(completed_answers)
         breakdown = build_readiness_breakdown(completed_answers)
         action_plan = build_modernization_plan(completed_answers)
+        context_guidance = build_context_guidance(
+            management_method,
+            manual_copy_frequency,
+        )
 
         st.divider()
         with st.container(key="results_panel", border=True):
@@ -154,6 +177,15 @@ if submitted:
                     )
                     st.write(area.summary)
 
+            if context_guidance:
+                st.subheader("Your business context")
+                st.caption(
+                    "This guidance reflects your optional operating-process answers "
+                    "and does not affect your score."
+                )
+                for item in context_guidance:
+                    st.markdown(f"- {item}")
+
             st.subheader("Recommended next steps")
             if priorities:
                 for index, (_, question) in enumerate(priorities, start=1):
@@ -209,6 +241,8 @@ if submitted:
                 result,
                 business_name=business_name,
                 business_type=business_type,
+                management_method=management_method,
+                manual_copy_frequency=manual_copy_frequency,
             )
             st.download_button(
                 "Download results report",

@@ -7,6 +7,7 @@ from diagnostic import (
     NOT_APPLICABLE,
     YES,
     SECURITY_CHECKPOINTS,
+    build_context_guidance,
     build_modernization_plan,
     build_readiness_breakdown,
     calculate_risk,
@@ -148,6 +149,37 @@ class DiagnosticTests(unittest.TestCase):
         self.assertIn("QUESTIONS TO ASK PROVIDERS", report)
         self.assertIn(SECURITY_CHECKPOINTS[0], report)
         self.assertIn("not a formal security", report)
+
+    def test_context_guidance_personalizes_without_changing_score(self):
+        answers = {
+            "inventory": NO,
+            "payments": YES,
+            "customers": NO,
+            "booking": NOT_APPLICABLE,
+        }
+        before = calculate_risk(answers)
+        guidance = build_context_guidance("Spreadsheets", "Every day")
+        after = calculate_risk(answers)
+
+        self.assertEqual(before, after)
+        self.assertEqual(len(guidance), 2)
+        self.assertIn("spreadsheet process", guidance[0])
+        self.assertIn("daily duplicate entry", guidance[1])
+
+    def test_report_includes_optional_business_context(self):
+        answers = {key: YES for key in ("inventory", "payments", "customers", "booking")}
+        result = calculate_risk(answers)
+        report = generate_report(
+            answers,
+            result,
+            management_method="Several separate applications",
+            manual_copy_frequency="Several times a week",
+        )
+
+        self.assertIn("BUSINESS CONTEXT", report)
+        self.assertIn("Operations management: Several separate applications", report)
+        self.assertIn("Repeated data entry: Several times a week", report)
+        self.assertIn("do not affect the score", report)
 
     def test_optional_report_text_is_normalized_and_limited(self):
         unsafe = "  Example\nStore\t" + "x" * 100

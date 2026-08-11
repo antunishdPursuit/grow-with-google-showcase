@@ -66,6 +66,24 @@ def test_golden_path_displays_breakdown_and_modernization_plan():
     ]
 
 
+def test_optional_business_context_personalizes_results_without_changing_score():
+    app = load_app()
+    app.selectbox[1].set_value("Spreadsheets")
+    app.selectbox[2].set_value("Every day")
+    answers = ["No", "Yes", "No", "Not applicable"]
+    for radio, answer in zip(app.radio, answers):
+        radio.set_value(answer)
+
+    app.button[0].click().run()
+
+    assert not app.exception
+    assert [metric.value for metric in app.metric] == ["66.7%", "High"]
+    assert "Your business context" in [heading.value for heading in app.subheader]
+    rendered_markdown = "\n".join(item.value for item in app.markdown)
+    assert "spreadsheet process" in rendered_markdown
+    assert "daily duplicate entry" in rendered_markdown
+
+
 def test_each_risk_level_has_a_visible_text_label():
     scenarios = {
         "Low risk": ["Yes", "Yes", "Yes", "No"],

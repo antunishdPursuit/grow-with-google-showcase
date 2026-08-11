@@ -11,6 +11,22 @@ NO = "No"
 NOT_APPLICABLE = "Not applicable"
 VALID_ANSWERS = {YES, NO, NOT_APPLICABLE}
 
+MANAGEMENT_METHODS = (
+    "One connected system",
+    "Several separate applications",
+    "Spreadsheets",
+    "Paper or mostly manual processes",
+    "I am not sure",
+)
+
+MANUAL_COPY_FREQUENCIES = (
+    "Never",
+    "Less than once a month",
+    "Several times a month",
+    "Several times a week",
+    "Every day",
+)
+
 
 @dataclass(frozen=True)
 class Question:
@@ -320,11 +336,80 @@ def build_modernization_plan(
     ]
 
 
+def build_context_guidance(
+    management_method: str = "",
+    manual_copy_frequency: str = "",
+) -> list[str]:
+    """Personalize guidance without changing the weighted risk score."""
+
+    if management_method and management_method not in MANAGEMENT_METHODS:
+        raise ValueError("Invalid management method")
+    if (
+        manual_copy_frequency
+        and manual_copy_frequency not in MANUAL_COPY_FREQUENCIES
+    ):
+        raise ValueError("Invalid manual copy frequency")
+
+    guidance = []
+    management_guidance = {
+        "One connected system": (
+            "Confirm that the connected system supports data exports, backups, "
+            "role-based access, and a clear process for failed integrations."
+        ),
+        "Several separate applications": (
+            "Map which application owns inventory, orders, and customer information, "
+            "then identify one repeated handoff that could be integrated."
+        ),
+        "Spreadsheets": (
+            "Choose the spreadsheet process with the most repeated updates and test "
+            "one small automated import, export, or synchronization step."
+        ),
+        "Paper or mostly manual processes": (
+            "Document one repeated administrative process before selecting software, "
+            "including who performs it and where errors or delays occur."
+        ),
+        "I am not sure": (
+            "Create a simple list of the tools, spreadsheets, and paper records used "
+            "for orders, inventory, and customer information."
+        ),
+    }
+    frequency_guidance = {
+        "Never": (
+            "Repeated data entry is not a reported concern; continue checking for "
+            "manual work as the business changes."
+        ),
+        "Less than once a month": (
+            "Record the occasional data handoff so it can be reviewed before it "
+            "becomes a larger recurring task."
+        ),
+        "Several times a month": (
+            "Track one month of repeated entries and prioritize the task that takes "
+            "the most time or creates the most errors."
+        ),
+        "Several times a week": (
+            "Prioritize one frequent data handoff for a small automation or system "
+            "integration test."
+        ),
+        "Every day": (
+            "Treat daily duplicate entry as an immediate modernization opportunity; "
+            "start with the highest-volume or most error-prone handoff."
+        ),
+    }
+
+    if management_method:
+        guidance.append(management_guidance[management_method])
+    if manual_copy_frequency:
+        guidance.append(frequency_guidance[manual_copy_frequency])
+    return guidance
+
+
 def generate_report(
     answers: Mapping[str, str],
     result: AssessmentResult,
     business_name: str = "",
     business_type: str = "",
+    management_method: str = "",
+    manual_copy_frequency: str = "",
 ) -> str:
     """Create a plain-text report without retaining or transmitting user input."""
 
@@ -334,6 +419,12 @@ def generate_report(
     action_plan = build_modernization_plan(answers)
     name = clean_user_text(business_name, max_length=80) or "Not provided"
     kind = clean_user_text(business_type, max_length=60) or "Not provided"
+    management = management_method or "Not provided"
+    copy_frequency = manual_copy_frequency or "Not provided"
+    context_guidance = build_context_guidance(
+        management_method,
+        manual_copy_frequency,
+    )
     lines = [
         "BUSINESS READINESS CHECK",
         "========================",
@@ -341,6 +432,19 @@ def generate_report(
         f"Business type: {kind}",
         "",
     ]
+
+    lines.extend(
+        [
+            "BUSINESS CONTEXT",
+            "----------------",
+            f"Operations management: {management}",
+            f"Repeated data entry: {copy_frequency}",
+            "These optional answers personalize guidance and do not affect the score.",
+        ]
+    )
+    if context_guidance:
+        lines.extend(f"- {item}" for item in context_guidance)
+    lines.append("")
 
     if result.risk_percentage is None:
         lines.extend(
