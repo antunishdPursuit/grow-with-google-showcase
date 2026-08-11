@@ -90,57 +90,72 @@ if submitted:
         priorities = find_priorities(completed_answers)
 
         st.divider()
-        st.header("Your results")
+        with st.container(key="results_panel", border=True):
+            st.header("Your results")
 
-        if result.risk_percentage is None:
-            st.warning(
-                "A score could not be calculated because every area was marked "
-                "Not applicable. Select at least one applicable area."
-            )
-        else:
-            score_column, level_column = st.columns(2)
-            score_column.metric("Technology risk score", f"{result.risk_percentage:.1f}%")
-            level_column.metric("Risk level", result.risk_level)
-
-            if priorities:
-                _, highest_priority = priorities[0]
-                st.subheader(f"Highest priority: {highest_priority.label}")
-                st.write(highest_priority.explanation)
-                st.success(highest_priority.recommendation)
+            if result.risk_percentage is None:
+                st.warning(
+                    "A score could not be calculated because every area was marked "
+                    "Not applicable. Select at least one applicable area."
+                )
             else:
-                st.success(
-                    "No priority gaps were identified from the answers provided."
+                risk_class = {
+                    "Low": "low",
+                    "Moderate": "moderate",
+                    "High": "high",
+                    "Critical": "critical",
+                }[result.risk_level]
+                st.markdown(
+                    f'<div class="brc-risk-badge brc-risk-{risk_class}">'
+                    f"{result.risk_level} risk</div>",
+                    unsafe_allow_html=True,
                 )
 
-        st.subheader("Recommended next steps")
-        if priorities:
-            for index, (_, question) in enumerate(priorities, start=1):
-                st.markdown(f"**{index}. {question.recommendation}**")
-                st.write(question.explanation)
-        elif result.risk_percentage is None:
-            st.write("Complete at least one applicable area to receive recommendations.")
-        else:
-            st.write("Continue monitoring these areas as the business changes.")
+                score_column, level_column = st.columns(2)
+                score_column.metric(
+                    "Technology risk score", f"{result.risk_percentage:.1f}%"
+                )
+                level_column.metric("Risk level", result.risk_level)
 
-        with st.expander("Review all answers"):
-            for key, question in QUESTIONS.items():
-                st.write(f"**{question.label}:** {completed_answers[key]}")
+                if priorities:
+                    _, highest_priority = priorities[0]
+                    st.subheader(f"Highest priority: {highest_priority.label}")
+                    st.write(highest_priority.explanation)
+                    st.info(highest_priority.recommendation)
+                else:
+                    st.success(
+                        "No priority gaps were identified from the answers provided."
+                    )
 
-        report = generate_report(
-            completed_answers,
-            result,
-            business_name=business_name,
-            business_type=business_type,
-        )
-        st.download_button(
-            "Download results report",
-            data=report,
-            file_name="business-readiness-check.txt",
-            mime="text/plain",
-            on_click="ignore",
-        )
+            st.subheader("Recommended next steps")
+            if priorities:
+                for index, (_, question) in enumerate(priorities, start=1):
+                    st.markdown(f"**{index}. {question.recommendation}**")
+                    st.write(question.explanation)
+            elif result.risk_percentage is None:
+                st.write("Complete at least one applicable area to receive recommendations.")
+            else:
+                st.write("Continue monitoring these areas as the business changes.")
 
-        st.caption(
-            "This educational tool provides general guidance. It is not a formal "
-            "security, financial, compliance, or technology audit."
-        )
+            with st.expander("Review all answers"):
+                for key, question in QUESTIONS.items():
+                    st.write(f"**{question.label}:** {completed_answers[key]}")
+
+            report = generate_report(
+                completed_answers,
+                result,
+                business_name=business_name,
+                business_type=business_type,
+            )
+            st.download_button(
+                "Download results report",
+                data=report,
+                file_name="business-readiness-check.txt",
+                mime="text/plain",
+                on_click="ignore",
+            )
+
+            st.caption(
+                "This educational tool provides general guidance. It is not a formal "
+                "security, financial, compliance, or technology audit."
+            )

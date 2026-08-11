@@ -38,6 +38,25 @@ def test_golden_path_displays_score_priority_and_download():
     assert len(app.get("download_button")) == 1
 
 
+def test_each_risk_level_has_a_visible_text_label():
+    scenarios = {
+        "Low risk": ["Yes", "Yes", "Yes", "No"],
+        "Moderate risk": ["Yes", "No", "Yes", "No"],
+        "High risk": ["No", "Yes", "No", "Not applicable"],
+        "Critical risk": ["No", "No", "No", "No"],
+    }
+
+    for expected_label, answers in scenarios.items():
+        app = load_app()
+        for radio, answer in zip(app.radio, answers):
+            radio.set_value(answer)
+
+        app.button[0].click().run()
+
+        assert not app.exception
+        assert any(expected_label in item.value for item in app.markdown)
+
+
 def test_incomplete_assessment_fails_safely():
     app = load_app()
     app.button[0].click().run()
@@ -57,4 +76,3 @@ def test_all_not_applicable_returns_no_score():
     assert not app.exception
     assert any("score could not be calculated" in item.value for item in app.warning)
     assert not app.metric
-
