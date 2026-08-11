@@ -1,0 +1,94 @@
+# Business Readiness Check: Research, Solution, and Implementation Summary
+
+## Problem and Research
+
+Traditional small retailers can depend on disconnected administrative tools and
+manual processes. These gaps can make it harder to maintain accurate inventory,
+offer convenient checkout options, retain customer contact information, and
+support online appointment booking. The project aligns with UN Sustainable
+Development Goal 9 by helping small businesses assess and strengthen their
+digital infrastructure.
+
+The team cleaned and reviewed a global e-commerce dataset containing
+transactions, customers, inventory, products, marketing, and supplier-cost
+information. The project report identified four operational pain points:
+
+1. Inventory records that are not synchronized between a physical point of sale
+   and an online store.
+2. Checkout friction when digital wallets or guest checkout are unavailable.
+3. Customer profiles that cannot support follow-up because email information is
+   missing or unverified.
+4. Manual scheduling that does not allow customers to book online at any time.
+
+Supporting articles and small-business surveys helped frame the broader problem.
+The e-commerce dataset is an illustrative case study, not a representative
+sample of every mom-and-pop storefront. The project therefore does not claim
+that every traditional business experiences the same rates or outcomes.
+
+## Solution
+
+The Business Readiness Check is a Python and Streamlit web application. It asks
+one question for each of the four pain points. A business owner answers Yes, No,
+or Not applicable.
+
+The questions use the weights defined in the team report:
+
+- Inventory synchronization: 5.
+- Payments and checkout: 4.
+- Customer email capture: 3.
+- Online booking: 2.
+
+A No answer adds the question's full weight. A Yes answer adds zero points. A
+Not applicable answer is excluded from both the score and the maximum applicable
+points. The application divides earned risk points by applicable points and
+converts the result to a percentage.
+
+The interface labels the result Low, Moderate, High, or Critical. These bands
+are project-designed interpretation categories rather than externally validated
+standards. If every answer is Not applicable, the application returns no score
+instead of presenting a misleading zero-risk result.
+
+Failed areas are ordered by weight. The application explains the highest
+priority, lists recommended actions, and creates a downloadable plain-text
+report. The result is intended to start a modernization conversation. It is not
+a formal technology, financial, compliance, or cybersecurity audit.
+
+## Implementation
+
+The scoring rules are separated from the Streamlit interface in
+`diagnostic.py`. This module defines the questions and provides functions for
+answer validation, scoring, risk classification, priority ordering, text
+normalization, and report generation. Separating these rules keeps the central
+logic understandable and testable.
+
+`app.py` provides one user journey: read the privacy notice, optionally identify
+the business, answer the questions, generate the result, review recommendations,
+and download the report. The first version does not use authentication, a
+database, file uploads, external APIs, or actual business-system integrations.
+
+Automated tests cover all-Yes and all-No results, mixed weights, Not applicable
+handling, all-not-applicable behavior, priority ordering, missing and invalid
+answers, optional-text normalization, and report consistency. Public deployment
+adds a second verification boundary: after deployment, the complete user flow
+and report download must be repeated on the live application.
+
+The security approach minimizes collected information. Business details are
+optional and length-limited, answers use fixed choices, report text is
+normalized, and responses are not intentionally stored after the active
+session. The application warns users not to enter passwords, payment-card data,
+customer records, or other sensitive information.
+
+## Outcome and Next Steps
+
+The project turns the team's analysis into a small, explainable automation tool
+that a non-technical owner can use in a few minutes. Future work could add
+optional data-file checks, accounting and shipping questions, researched vendor
+comparisons, and user testing. Those features remain outside the current build
+so the submitted application stays focused, testable, and clear about its
+evidence limits.
+
+## Sources
+
+- [Project report and diagnostic criteria](https://docs.google.com/document/d/1OFAOKCO0PFtaKKfRQRJTysoO7rNMozFNBWTMYOUmOcI/edit)
+- [MMC BUILD Project Outline](https://docs.google.com/document/d/1InNWpho03JfFCXKAuMmXqKNMXpoGoRerdZamuqvCQ2M/edit?tab=t.0)
+- [UN Sustainable Development Goal 9](https://sdgs.un.org/goals/goal9)

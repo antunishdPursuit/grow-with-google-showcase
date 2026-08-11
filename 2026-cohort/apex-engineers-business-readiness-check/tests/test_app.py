@@ -1,0 +1,60 @@
+"""Streamlit walking-skeleton tests for the complete assessment flow."""
+
+from pathlib import Path
+
+from streamlit.testing.v1 import AppTest
+
+
+APP_PATH = Path(__file__).parents[1] / "app.py"
+
+
+def load_app() -> AppTest:
+    app = AppTest.from_file(str(APP_PATH)).run()
+    assert not app.exception
+    return app
+
+
+def test_app_renders_complete_assessment_form():
+    app = load_app()
+    assert app.title[0].value == "Business Readiness Check"
+    assert len(app.radio) == 4
+    assert app.button[0].label == "Generate assessment"
+
+
+def test_golden_path_displays_score_priority_and_download():
+    app = load_app()
+    answers = ["No", "Yes", "No", "Not applicable"]
+    for radio, answer in zip(app.radio, answers):
+        radio.set_value(answer)
+
+    app.button[0].click().run()
+
+    assert not app.exception
+    assert [metric.value for metric in app.metric] == ["66.7%", "High"]
+    assert any(
+        heading.value == "Highest priority: Inventory synchronization"
+        for heading in app.subheader
+    )
+    assert len(app.get("download_button")) == 1
+
+
+def test_incomplete_assessment_fails_safely():
+    app = load_app()
+    app.button[0].click().run()
+
+    assert not app.exception
+    assert any("Answer every diagnostic question" in item.value for item in app.warning)
+    assert not app.metric
+
+
+def test_all_not_applicable_returns_no_score():
+    app = load_app()
+    for radio in app.radio:
+        radio.set_value("Not applicable")
+
+    app.button[0].click().run()
+
+    assert not app.exception
+    assert any("score could not be calculated" in item.value for item in app.warning)
+    assert not app.metric
+
