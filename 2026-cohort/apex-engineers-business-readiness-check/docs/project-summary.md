@@ -95,7 +95,7 @@ optional-text normalization, and report consistency. Public deployment adds a
 second verification boundary: after deployment, the complete user flow and
 report download must be repeated on the live application.
 
-The final test suite contains 21 automated tests. The deployed Render application
+The final test suite contains 22 automated tests. The deployed Render application
 was also checked at desktop and mobile widths. A mixed assessment produced 8 of
 12 applicable risk points, a 66.7% High-risk result, inventory synchronization as
 the highest priority, matching business-context guidance, and a complete

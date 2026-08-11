@@ -73,7 +73,7 @@ the tool returns no score instead of reporting zero risk.
 
 ## Project Status
 
-The expanded application is built, tested, and publicly deployed. All 21
+The expanded application is built, tested, and publicly deployed. All 22
 automated tests pass. The mixed-answer assessment, optional business-context
 flow, downloadable report, and mobile layout were verified in the deployed
 environment. The walkthrough video and final pull request remain incomplete.
