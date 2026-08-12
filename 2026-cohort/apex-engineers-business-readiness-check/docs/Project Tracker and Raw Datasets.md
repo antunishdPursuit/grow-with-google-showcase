@@ -9,8 +9,8 @@ This repository contains the datasets, research materials, project tracking logs
 | Team Member | Task(s) | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | **Ramya Kota** | • Create Project Folder on Google Drive<br>• Source for datasets | Completed | Created the folder on Google Drive. Sourced e-commerce sales, admin, and mom-and-pop store datasets on Kaggle. Completed cleaning and analyzing data through Google Sheets. |
-| **Abby** | • Upload PACE document<br>• Source for datasets | Completed | Uploaded and maintained the PACE document. Sourced datasets to explore pricing strategies across retail categories. Sourced cybersecurity threat dataset and prepared a summary report and Tableau dashboard. |
-| **Dennis** | • Add GitHub Repository<br>• Design Project Framework | Completed | Added the repository and designed the project framework. Created a diagnostic tool dashboard and added a project summary video. |
+| **Aishat Omolabake** | • Upload PACE document<br>• Source for datasets | Completed | Uploaded and maintained the PACE document. Sourced datasets to explore pricing strategies across retail categories. Sourced cybersecurity threat dataset and prepared a summary report and Tableau dashboard. |
+| **Dennys** | • Add GitHub Repository<br>• Design Project Framework | Completed | Added the repository and designed the project framework. Created a diagnostic tool dashboard and added a project summary video. |
 | **Sukanya** | • Explore security angle for project | Completed | Explored the cybersecurity domain, prepared a cybersecurity report, and generated data visualizations. |
 
 ---
