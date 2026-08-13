@@ -41,7 +41,7 @@ Analysis of the cleaned data identified a "Fragmentation Tax" — the hidden cos
 - **Service Silos (Service Calendaring Silos):** Manual booking processes in high-revenue categories (e.g., Health & Beauty, which generated over $2.6M) create extreme customer friction. A lack of 24/7 digital booking integration prevents efficient scheduling and negatively impacts revenue in these service-dependent categories.
 
 <p align="center">
-<img src="img/4painpoints.png" title="4 Pain Points" alt="4 Pain Points"> </p>
+<img src="Img/4painpoints.png" title="4 Pain Points" alt="4 Pain Points"> </p>
 
 **[Click here to view interactive dashboard](https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)**
 
