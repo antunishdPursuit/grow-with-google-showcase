@@ -1,4 +1,6 @@
-# Cybersecurity Review Report: Small Business Tech-Stack Diagnostic Tool
+# Cybersecurity Review Report: Business Readiness Check
+
+Assigned project topic: Small Business Tech-Stack Diagnostic Tool
 
 Framework: NIST Cybersecurity Framework 2.0 (Reference Framework)
 
@@ -6,7 +8,7 @@ Alignment: UN SDG Goal 9 - Industry, Innovation, and Infrastructure
 
 ## Executive Summary
 
-This security review examines the proposed Python and Streamlit diagnostic tool for small-business owners. The tool assesses four critical technology gaps identified in the project analysis: inventory synchronization, digital payments, customer email capture, and online booking capabilities. Research indicates that 56% of US small businesses experienced cyber attacks in the past year, with 88% of SMB breaches involving ransomware [1]. The cybersecurity approach follows data minimization principles, processing responses only during active sessions without permanent storage.
+This security review examines the proposed Python and Streamlit diagnostic tool for small-business owners. The tool assesses four critical technology gaps identified in the project analysis: inventory synchronization, digital payments, customer email capture, and online booking capabilities. Research indicates that 56% of US small businesses experienced cyber attacks in the past year, with 88% of SMB breaches involving ransomware [1][2]. The cybersecurity approach follows data minimization principles, processing responses only during active sessions without permanent storage.
 
 ## Small Business Threat Landscape
 
@@ -45,7 +47,7 @@ Third-party dependencies map directly onto this project's four technology gaps: 
 | Customer Email (Weight 3) | 8.65% ghost customers; $3.9M in inaccessible revenue | Medium | Data minimization, privacy controls (breach cost $4.44M) [5] |
 | Online Booking (Weight 2) | Beauty & Health category revenue exceeds $2.6M | Low-Medium | Account separation, availability controls |
 
-The four identified technology gaps from the project analysis have the specific security implications above, weighted by risk severity and drawn from the project's e-commerce analysis and Tableau dashboard [11].
+The four identified technology gaps from the project analysis have the specific security implications above, weighted by risk severity and drawn from the project's e-commerce analysis and Tableau dashboard [10].
 
 ## Security Questions & Responses
 
@@ -159,7 +161,7 @@ This is the recommended order of implementation, based on the threat data and pr
 
 ## Conclusion
 
-The proposed cybersecurity approach fits the Small Business Tech-Stack Diagnostic Tool. It addresses the security considerations raised in this review, stays aligned with the project's four-gap analysis, supports UN SDG Goal 9, and uses NIST CSF 2.0 as a defensible reference framework. The “no permanent storage” approach for v1.0 is the right security posture for this stage: it limits what could go wrong while still delivering the tool's value. Current research puts the baseline failure rate at 93%, the MFA adoption gap at 65%, and ransomware prevalence among SMB breaches at 88%, which is why the MFA and session-management controls in the Cybersecurity Readiness Check matter most for a first release.
+The proposed cybersecurity approach fits the Business Readiness Check. It addresses the security considerations raised in this review, stays aligned with the project's four-gap analysis, supports UN SDG Goal 9, and uses NIST CSF 2.0 as a defensible reference framework. The “no permanent storage” approach for v1.0 is the right security posture for this stage: it limits what could go wrong while still delivering the tool's value. Current research puts the baseline-practice gap at 93%, the MFA adoption gap at 65%, and ransomware prevalence among SMB breaches at 88%, which is why the MFA and session-management controls in the Cybersecurity Readiness Check matter most for a first release [2][3].
 
 Recommendation: Proceed with implementation using the security controls outlined in this review, including the addition of the 3-question Cybersecurity Readiness Check.
 
@@ -173,10 +175,9 @@ Recommendation: Proceed with implementation using the security controls outlined
 - [6] Streamlit Documentation - Trust and Security. [https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/trust-and-security](https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/trust-and-security)
 - [7] NIST CSF 2.0 Core Publication. [https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=957258](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=957258)
 - [8] NIST CSF Tools Visualizations. [https://csf.tools/visualizations/](https://csf.tools/visualizations/)
-- [9] Trend Micro, “Point-of-Sale System Breaches: Threats to the Retail and Hospitality Industries” — memory-scraping malware targets POS terminals globally. Publisher and topic verified; confirm this exact URL still resolves before external distribution. [https://documents.trendmicro.com/assets/wp/wp-pos-system-breaches.pdf](https://documents.trendmicro.com/assets/wp/wp-pos-system-breaches.pdf)
-- [10] SMB breach-cost and third-party exposure figures cited in the original project materials (55% third-party exposure; 61% breach rate;65% don’t use MFA, $3.31M average cost for firms under 500 employees; ransomware present in 44% of breaches; $300,000+/hour downtime cost). The $3.31M and 44% figures are independently confirmed via Verizon DBIR/IBM data (see source [2]). [https://cyflare.com/smb-threat-landscape-report/](https://cyflare.com/smb-threat-landscape-report/)
-- [11] Project Report: Small Business Tech-Stack Diagnostic Tool, Team Apex Engineers, 2026. Fragmentation Tax analysis of 100,000+ e-commerce transactions. Internal project document. Interactive dashboard: [https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool](https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool)
-- [12] SBE Council Small Business Technology Use Survey, March 2026: found high small-business adoption of digital tools, not low adoption as earlier drafts of this review stated — 82% of employers use AI tools and 90% report confidence adopting new digital tools. Referenced in [11]. [https://sbecouncil.org/wp-content/uploads/2026/03/SBE-Technology-Use-Survey-March-2026-Final-2.pdf](https://sbecouncil.org/wp-content/uploads/2026/03/SBE-Technology-Use-Survey-March-2026-Final-2.pdf)
-- [13] Lendio Study: mom-and-pop businesses show an average credit score 30 points lower and monthly revenue about $35,000 lower than other small businesses. Referenced in [11]. [https://www.lendio.com/blog/study-mom-and-pop-businesses](https://www.lendio.com/blog/study-mom-and-pop-businesses)
+- [9] Trend Micro, “Point-of-Sale System Breaches: Threats to the Retail and Hospitality Industries” — memory-scraping malware targets POS terminals globally. [https://documents.trendmicro.com/assets/wp/wp-pos-system-breaches.pdf](https://documents.trendmicro.com/assets/wp/wp-pos-system-breaches.pdf)
+- [10] Project Report: Small Business Tech-Stack Diagnostic Tool, Team Apex Engineers, 2026. Fragmentation Tax analysis of 100,000+ e-commerce transactions. Internal project document. Interactive dashboard: [https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool](https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool)
+- [11] SBE Council Small Business Technology Use Survey, March 2026: found high small-business adoption of digital tools, not low adoption as earlier drafts of this review stated — 82% of employers use AI tools and 90% report confidence adopting new digital tools. Referenced in [10]. [https://sbecouncil.org/wp-content/uploads/2026/03/SBE-Technology-Use-Survey-March-2026-Final-2.pdf](https://sbecouncil.org/wp-content/uploads/2026/03/SBE-Technology-Use-Survey-March-2026-Final-2.pdf)
+- [12] Lendio Study: mom-and-pop businesses show an average credit score 30 points lower and monthly revenue about $35,000 lower than other small businesses. Referenced in [10]. [https://www.lendio.com/blog/study-mom-and-pop-businesses](https://www.lendio.com/blog/study-mom-and-pop-businesses)
 
-Supporting visualizations and detailed threat data referenced in this report are checked against the project's Tableau dashboard and Project Report [11].
+Supporting visualizations and detailed threat data referenced in this report are checked against the project's Tableau dashboard and Project Report [10].

@@ -1,6 +1,8 @@
-# E-Commerce Pop-Up Store & Small Business Diagnostic Project
+# Business Readiness Check: Project Tracker and Data Sources
 
-This repository contains the datasets, research materials, project tracking logs, and analytical insights gathered to design a **Small Business Tech-Stack Diagnostic Tool**.
+This document records the datasets, research materials, project tracking, and
+analytical insights used to develop the **Business Readiness Check**, the team's
+implementation of the assigned Small Business Tech-Stack Diagnostic Tool topic.
 
 ---
 
@@ -9,9 +11,9 @@ This repository contains the datasets, research materials, project tracking logs
 | Team Member | Task(s) | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | **Ramya Kota** | • Create Project Folder on Google Drive<br>• Source for datasets | Completed | Created the folder on Google Drive. Sourced e-commerce sales, admin, and mom-and-pop store datasets on Kaggle. Completed cleaning and analyzing data through Google Sheets. |
-| **Aishat Omolabake** | • Upload PACE document<br>• Source for datasets | Completed | Uploaded and maintained the PACE document. Sourced datasets to explore pricing strategies across retail categories. Sourced cybersecurity threat dataset and prepared a summary report and Tableau dashboard. |
-| **Dennys** | • Add GitHub Repository<br>• Design Project Framework | Completed | Added the repository and designed the project framework. Created a diagnostic tool dashboard and added a project summary video. |
-| **Sukanya** | • Explore security angle for project | Completed | Explored the cybersecurity domain, prepared a cybersecurity report, and generated data visualizations. |
+| **Aishat Omolabake** | • Maintain PACE document<br>• Advanced data analysis and dashboard | Completed | Maintained the PACE workflow, analyzed the global dataset, and documented the Tableau dashboard. |
+| **Dennys** | • Manage GitHub repository<br>• Design and implement project framework | Completed | Managed the repository and implemented the Python and Streamlit Business Readiness Check, automated scoring and report generation, tests, deployment, and core documentation. The team walkthrough video is in progress. |
+| **Sukanya** | • Explore security angle for project | Completed | Prepared the cybersecurity review, NIST CSF 2.0 alignment, security roadmap, and supporting visualizations. |
 
 ---
 
@@ -52,35 +54,42 @@ This repository contains the datasets, research materials, project tracking logs
 Traditional mom-and-pop retail storefronts lack a simple, automated path to audit and modernize their legacy administrative software.
 
 ### Goal
-Build a **Small Business Tech-Stack Diagnostic Tool** by cleaning and analyzing transactional data and industry articles to isolate core operational pain points and map them to low-cost modernization tools.
+Build the **Business Readiness Check** by using transactional data and industry
+research to identify operational pain points and provide practical
+modernization guidance.
 
 ---
 
-### Key Pain Points of Mom-and-Pop Retailers
+### Potential Pain Points Considered
+
+The items below are research-informed conditions the team considered while
+defining the diagnostic. They are not claims that every mom-and-pop business
+experiences the same conditions or outcomes.
 
 #### 1. Financial & Funding Challenges
-* **Lower Revenue & Credit Scores:** Mom-and-pop operators average lower monthly revenue and credit scores, restricting access to affordable growth loans ([Lendio Study](https://www.lendio.com/blog/study-mom-and-pop-businesses))[cite: 1].
-* **Tight Profit Margins:** Daily operational costs, unexpected sales taxes, and high software fees heavily eat into margins[cite: 1].
+* **Lower Revenue & Credit Scores:** Mom-and-pop operators may face lower monthly revenue and credit scores, restricting access to affordable growth loans ([Lendio Study](https://www.lendio.com/blog/study-mom-and-pop-businesses)).
+* **Tight Profit Margins:** Daily operational costs, taxes, and software fees can reduce already-limited margins.
 
 #### 2. Logistics & Operational Pressures
-* **Shipping Disadvantages:** Difficulty absorbing shipping fees or offering fast delivery leads to customer loss against major online retailers[cite: 1].
-* **Fulfillment Errors:** Manual entry and fragmented tracking across legacy spreadsheets lead to inaccurate inventory records and customer distrust[cite: 1].
+* **Shipping Disadvantages:** Difficulty absorbing shipping fees or offering fast delivery can make it harder to compete with major online retailers.
+* **Fulfillment Errors:** Manual entry and fragmented tracking across legacy spreadsheets can contribute to inaccurate inventory records.
 
 #### 3. Marketing & Technology Gaps
-* **The Personalization Gap:** Lack of budget for AI merchandising or targeted ad campaigns[cite: 1].
-* **Platform Risks:** Misconfigurations in digital payment setups or account suspensions stall store operations instantly[cite: 1].
+* **The Personalization Gap:** Limited budgets can restrict access to advanced merchandising or targeted-advertising tools.
+* **Platform Risks:** Payment-configuration errors or account interruptions can disrupt store operations.
 
 ---
 
 ### The "Fragmentation Tax"
 
-Small storefronts moving online suffer from software tools that refuse to integrate seamlessly:
+The team used the term "fragmentation tax" for potential costs and manual work
+created when business tools do not exchange information reliably:
 
 1. **The Manual Reconciling Trap (Inventory & Sales Gaps):**
-   Hours spent manually updating spreadsheets to match brick-and-mortar registers with online stores causes **phantom stockouts** or overselling[cite: 1].
+   Manually updating spreadsheets to match storefront and online inventory can contribute to **phantom stockouts** or overselling.
 2. **Hidden Transaction Friction (Payment Gaps):**
-   Lack of guest checkout options or modern digital wallets (Apple Pay, UPI, automated invoicing) leads to high **cart abandonment rates**[cite: 1].
+   Missing guest checkout or modern digital-wallet options can add customer friction.
 3. **Ghost Customers (Email & Tracking Gaps):**
-   Inability to automatically pipe register data into marketing tools leaves merchants with no automated retention, win-back, or abandoned-cart pipelines[cite: 1].
+   Disconnected register and marketing systems can limit automated retention, win-back, or abandoned-cart workflows.
 4. **Service Calendaring Silos (Booking Gaps):**
-   Forcing clients to call during business hours to book consultations or appointments introduces drop-off friction compared to 24/7 digital booking links[cite: 1].
+   Phone-only scheduling can prevent customers from booking outside business hours.

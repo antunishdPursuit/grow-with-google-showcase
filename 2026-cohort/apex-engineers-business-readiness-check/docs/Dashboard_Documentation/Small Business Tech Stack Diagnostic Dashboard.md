@@ -1,6 +1,8 @@
-# Interactive Dashboard Documentation
+# Business Readiness Check Dashboard Documentation
 
-**Small Business Tech-Stack Diagnostic Tool — Team Apex Engineers**
+**Assigned topic:** Small Business Tech-Stack Diagnostic Tool
+
+**Implemented solution:** Business Readiness Check — Team Apex Engineers
 
 Grow with Google / MMC BUILD Stage — UN SDG 9: Industry, Innovation & Infrastructure
 
@@ -12,7 +14,10 @@ Grow with Google / MMC BUILD Stage — UN SDG 9: Industry, Innovation & Infrastr
 
 ## 1. Purpose
 
-This document records the process of building the interactive dashboard component of the team's Small Business Tech-Stack Diagnostic Tool. It covers the data source, the data model, each analysis breakdown, the storytelling structure of the final dashboard, and the technical issues encountered and resolved along the way.
+This document records the process of building the interactive dashboard that
+supports the team's Business Readiness Check. It covers the data source, data
+model, analysis breakdowns, storytelling structure, and technical issues
+encountered and resolved along the way.
 
 ## 2. Data Source
 

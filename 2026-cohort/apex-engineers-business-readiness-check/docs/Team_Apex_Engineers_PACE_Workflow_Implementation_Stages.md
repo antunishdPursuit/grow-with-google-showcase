@@ -4,6 +4,8 @@
 
 **Project Topic:** Small Business Tech-Stack Diagnostic Tool
 
+**Implemented Solution:** Business Readiness Check
+
 **Problem Statement:** Traditional mom-and-pop retail storefronts lack a simple, automated path to audit and modernize their legacy administrative software.
 
 ---
@@ -50,14 +52,21 @@ Project Timeline – 4 weeks
 - **Data Foundation:** Sourcing of raw datasets (Ramya Kota & Aishat Omolabake Ajibola).
 - **Analysis:** Data cleaning, Exploratory Data Analysis (EDA), and identification of the four key pain points (Ramya Kota).
 - **Visualization & Reporting:** Building the Tableau dashboard and generating the comprehensive project report (Aishat Omolabake Ajibola).
-- **Technical Development:** Simultaneous development of the Streamlit diagnostic tool (Dennys Antunish) and implementation of security/NIST protocols (Sukanya Karri).
+- **Technical Development:** Development of the Streamlit diagnostic tool
+  (Dennys Antunish) and review against security practices and the NIST CSF 2.0
+  reference framework (Sukanya Karri).
 
 ### **Where will we source data — do we use publicly available datasets (Kaggle, Data.gov, SBA/other small-business surveys), collect our own via a short survey, or simulate representative data? What are the tradeoffs?**
-We utilized a raw global e-commerce dataset sourced by Ramya Kota. The data underwent rigorous cleaning, deduplication, and formatting in Google Sheets, followed by exploratory analysis to identify key performance trends.
+We used a global e-commerce dataset sourced by Ramya Kota. The data underwent
+cleaning, deduplication, and formatting, followed by exploratory analysis to
+identify relevant operational indicators.
 
 ### **What tools/platforms will we standardize on (GitHub repo structure, branch naming, communication channel, file-sharing/notebook environment) so our work merges cleanly?**
-- **Version Control (GitHub):** 'Main' branch for stable code; 'feature/' prefixes for all development work (e.g., feature/data-clean).
-- **Repository Structure:** `/src` for Python/Streamlit code, `/docs` for original datasets, cleaned datasets, images, documentation, reports.
+- **Version Control (GitHub):** Shared `apex-engineers` branch in the team fork;
+  final pull request targets the MMC repository's `main` branch and remains
+  open for review.
+- **Repository Structure:** Project-root Python and Streamlit files, `/tests`
+  for automated checks, and `/docs` for datasets, images, analysis, and reports.
 - **Communication:** Slack for daily operational updates and coordination; Google Meet for bi-weekly status syncs.
 - **File-sharing:** Google Drive for all shared documentation and project logs.
 
@@ -80,7 +89,12 @@ We utilized a raw global e-commerce dataset sourced by Ramya Kota. The data unde
 ## PACE: Analyze Stage
 
 ### **Will the data we source (real or self-collected) be sufficient to build a credible diagnostic, or will we need to supplement/simulate additional data?**
-The raw global e-commerce dataset provides a robust baseline for identifying "Fragmentation Tax" patterns (Inventory, Payment, Marketing, and Service silos). While this data is sufficient for identifying the core pain points, we will supplement it by simulating specific "tech-stack maturity" profiles — ranging from fully manual to digitally integrated — to stress-test the diagnostic logic and ensure the weighted scoring framework accurately distinguishes between varying levels of modernization needs.
+The global e-commerce dataset provides an illustrative baseline for examining
+inventory, payment, customer, and service-related indicators. It does not
+directly measure a business's software maturity or prove that legacy software
+caused an observed outcome. The diagnostic logic is therefore stress-tested
+with predefined answer combinations, including fully enabled, fully manual,
+mixed, invalid, and not-applicable cases.
 
 ### **What variables/fields do we need in our dataset to score a business's tech-stack maturity (e.g. software used per category, age of system, manual vs. digital processes, budget, and staff size)?**
 We need categories covering Payments (digital wallet support), Inventory (automation level), Email capture status, and Booking.
@@ -89,10 +103,16 @@ We need categories covering Payments (digital wallet support), Inventory (automa
 The score is calculated based on the presence/absence of automation across four pillars: Payments, Inventory, Marketing, and Service/Booking. Weights are assigned based on revenue impact (e.g., Inventory has higher weights due to direct revenue loss).
 
 ### **What does a summary of our dataset look like once collected — sample size, ranges, any gaps or unusual patterns we should flag before building on top of it?**
-The dataset includes thousands of transaction/customer records. Gaps include unverified customer emails (8.65% "Ghost Customers") and manual booking processes in high-revenue service categories.
+The dataset includes thousands of transaction and customer records. Indicators
+include unverified customer emails and inventory and payment patterns. Booking
+need is a project assumption for service-oriented businesses rather than a
+field directly measured by the dataset.
 
 ### **What assumptions are we making about small businesses that we should validate against the data rather than guess?**
-We assume manual processes lead to measurable inefficiency. The data validates this by showing lost revenue and customer friction linked to siloed systems.
+We assume manual processes can contribute to inefficiency. The dataset
+illustrates operational indicators, but it does not establish that disconnected
+software caused lost revenue or customer friction. The tool therefore provides
+general guidance rather than a causal or externally validated assessment.
 
 ### **What are the key assumptions made in the analysis?**
 1. **Data Representation:** The provided tables are assumed to accurately represent the complete operational history and current inventory levels of the business.
@@ -117,7 +137,10 @@ MVP: A 6-question survey that calculates a simple risk score and outputs a txt-s
 A web-based interactive tool providing a score and an actionable, prioritized roadmap, including recommended next steps, a modernization action plan, how to measure progress, questions to ask providers, and security checkpoints.
 
 ### **What do we still need to investigate or validate before we consider the tool ready to demo?**
-Verify input validation logic against potential edge cases and ensure no user data is persisted (session-based storage verification).
+Input validation, incomplete and invalid answers, scoring edge cases, and
+report generation are covered by 22 automated tests. The application does not
+use a database or intentionally retain assessment answers after the active
+session. The final walkthrough video and upstream pull request remain pending.
 
 ### **What does the README need to cover so anyone (including graders) can run/view the project easily? And, who is responsible for it?**
 The README must cover: problem statement, solution summary, instructions to run or view the project, and the walkthrough video link. Responsibility: Collaborative team effort, with Dennys Antunish responsible for technical coordination and final assembly.
@@ -126,11 +149,16 @@ The README must cover: problem statement, solution summary, instructions to run 
 All team members are responsible for the recording of the walkthrough video, which will be compiled and edited by Dennys Antunish.
 
 ### **Who is responsible for writing the short written summary (max 3 pages) of the research, solution, and implementation plan?**
-Aishat Omolabake Ajibola is the primary author, with all team members responsible for reviewing the draft and providing feedback.
+The final Markdown summary is stored in `docs/project-summary.md`. All team
+members are responsible for reviewing it and confirming that their work is
+represented accurately.
 
 ### **What would the team folders on GitHub entail?**
-- `/docs` — documentation, screenshots, datasets, source links, other write-ups
-- `/src` — source codes
+- Project root — Streamlit application, scoring logic, styles, configuration,
+  requirements, README, license, and security guidance
+- `/tests` — automated application and diagnostic tests
+- `/docs` — documentation, screenshots, datasets, source links, analysis, and
+  supporting write-ups
 
 ### **What is our plan for the final week — buffer time for integration, testing, and polishing the submission before the August 14 deadline?**
 Final code review, security audit of the deployment process (HTTPS/TLS verification), and final polish of the user dashboard interface.
