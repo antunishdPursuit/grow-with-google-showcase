@@ -77,16 +77,31 @@ The expanded application is built, tested, and publicly deployed. All 22
 automated tests pass. The mixed-answer assessment, optional business-context
 flow, downloadable report, and mobile layout were verified in the deployed
 environment. The walkthrough video and final pull request remain incomplete.
+The team is currently producing the walkthrough video. Its verified public link
+will be added here before the final pull request is opened.
 
 ## Team
 
-- Ramya Kota - Data Analytics
-- Dennys Antunish - IT Automation with Python
-- Sukanya Karri - Cybersecurity
-- Aishat Omolabake Ajibola - Advanced Data Analytics
+- Ramya Kota - Data Analytics: sourced, cleaned, and analyzed the global
+  e-commerce dataset and documented the research and dataset inventory.
+- Dennys Antunish - IT Automation with Python: implemented the Streamlit
+  application, scoring and report automation, tests, deployment, and core
+  repository documentation.
+- Sukanya Karri - Cybersecurity: completed the cybersecurity review, NIST CSF
+  alignment, safeguards, and security implementation roadmap.
+- Aishat Omolabake Ajibola - Advanced Data Analytics: developed the interactive
+  dashboard documentation and expanded the PACE workflow and implementation
+  stages.
 
-Dennys Antunish implemented the application and repository deliverables. The
-research and analysis supplied the problem framing and diagnostic criteria.
+## Supporting Project Documentation
+
+- [Research, project tracker, and dataset inventory](docs/Project%20Tracker%20and%20Raw%20Datasets.md)
+- [Cleaned and analyzed global dataset](docs/Global%20Dataset.xlsx)
+- [Interactive dashboard documentation](docs/Dashboard_Documentation/Small%20Business%20Tech%20Stack%20Diagnostic%20Dashboard.md)
+- [PACE workflow and implementation stages](docs/Team_Apex_Engineers_PACE_Workflow_Implementation_Stages.md)
+- [Cybersecurity review report](docs/Cybersecurity_Review_Report_md/Cybersecurity_Review_Report.md)
+- [Business Readiness Check implementation plan](docs/implementation-plan.md)
+- [Research, solution, and implementation summary](docs/project-summary.md)
 
 ## Grow with Google Resources Used
 
@@ -113,7 +128,12 @@ apex-engineers-business-readiness-check/
 |   `-- test_diagnostic.py
 `-- docs/
     |-- implementation-plan.md
-    `-- project-summary.md
+    |-- project-summary.md
+    |-- Project Tracker and Raw Datasets.md
+    |-- Global Dataset.xlsx and supporting CSV files
+    |-- Dashboard_Documentation/
+    |-- Team_Apex_Engineers_PACE_Workflow_Implementation_Stages.md
+    `-- Cybersecurity_Review_Report_md/
 ```
 
 ## Run Locally
@@ -163,8 +183,9 @@ branch.
 
 ## Project Walkthrough Video
 
-The final walkthrough video, no longer than five minutes, will be linked here
-after recording.
+The team is currently recording and combining the final walkthrough. The
+verified public video link will be added here when it is ready. The final video
+will be no longer than five minutes.
 
 ## Research and Limitations
 
