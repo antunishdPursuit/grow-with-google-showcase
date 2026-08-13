@@ -76,17 +76,19 @@ the tool returns no score instead of reporting zero risk.
 The expanded application is built, tested, and publicly deployed. All 22
 automated tests pass. The mixed-answer assessment, optional business-context
 flow, downloadable report, and mobile layout were verified in the deployed
-environment. The walkthrough video and final pull request remain incomplete.
+environment. Team research, dashboard, workflow, and cybersecurity materials
+are included in the repository. The walkthrough video is in progress, and the
+final pull request has not been opened.
 
 ## Team
 
-- Ramya Kota - Data Analytics
-- Dennys Antunish - IT Automation with Python
-- Sukanya Karri - Cybersecurity
-- Aishat Omolabake Ajibola - Advanced Data Analytics
-
-Dennys Antunish implemented the application and repository deliverables. The
-research and analysis supplied the problem framing and diagnostic criteria.
+- Ramya Kota - Data Analytics: dataset research and project tracking
+- Dennys Antunish - IT Automation with Python: application, scoring logic,
+  tests, deployment, and core documentation
+- Sukanya Karri - Cybersecurity: cybersecurity review and NIST CSF 2.0-based
+  recommendations
+- Aishat Omolabake Ajibola - Advanced Data Analytics: Tableau dashboard and
+  PACE workflow documentation
 
 ## Grow with Google Resources Used
 
@@ -112,8 +114,18 @@ apex-engineers-business-readiness-check/
 |   |-- test_app.py
 |   `-- test_diagnostic.py
 `-- docs/
+    |-- Global Dataset.xlsx
     |-- implementation-plan.md
-    `-- project-summary.md
+    |-- Project Tracker and Raw Datasets.md
+    |-- project-summary.md
+    |-- Team_Apex_Engineers_PACE_Workflow_Implementation_Stages.md
+    |-- Cybersecurity_Review_Report_md/
+    |   |-- Cybersecurity_Review_Report.md
+    |   `-- images/
+    |-- Dashboard_Documentation/
+    |   |-- Small Business Tech Stack Diagnostic Dashboard.md
+    |   `-- img/
+    `-- supporting CSV datasets
 ```
 
 ## Run Locally
@@ -163,8 +175,20 @@ branch.
 
 ## Project Walkthrough Video
 
-The final walkthrough video, no longer than five minutes, will be linked here
-after recording.
+The final walkthrough video is in progress. The submission is waiting for the
+verified public video link, which will be added here after the recording is
+complete. The final video will be no longer than five minutes.
+
+## Supporting Project Materials
+
+- [Final written project summary](docs/project-summary.md)
+- [Implementation plan](docs/implementation-plan.md)
+- [Project tracker and raw dataset notes](docs/Project%20Tracker%20and%20Raw%20Datasets.md)
+- [Global e-commerce dataset](docs/Global%20Dataset.xlsx)
+- [Tableau dashboard documentation](docs/Dashboard_Documentation/Small%20Business%20Tech%20Stack%20Diagnostic%20Dashboard.md)
+- [Interactive Tableau dashboard](https://public.tableau.com/views/SmallBusinessTech-StackDiagnosticToolbyTeamApexEngineer/SmallBusinessTech-StackDiagnosticTool)
+- [PACE workflow implementation stages](docs/Team_Apex_Engineers_PACE_Workflow_Implementation_Stages.md)
+- [Cybersecurity review report](docs/Cybersecurity_Review_Report_md/Cybersecurity_Review_Report.md)
 
 ## Research and Limitations
 
