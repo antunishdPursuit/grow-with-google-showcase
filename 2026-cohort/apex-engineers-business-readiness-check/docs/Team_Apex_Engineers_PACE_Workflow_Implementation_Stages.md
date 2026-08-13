@@ -15,7 +15,10 @@
 ## PACE: Plan Stage
 
 ### **What does "tech-stack diagnostic" mean for our specific project — what exactly are we building?**
-Build a Python and Streamlit diagnostic tool for small-business owners. This tool evaluates key operational and security areas to calculate a weighted risk score, identify the highest-priority technology gap, and generate a practical modernization roadmap.
+Build a Python and Streamlit diagnostic tool for small-business owners. This
+tool evaluates four operational areas to calculate a weighted risk score,
+identify the highest-priority technology gap, and generate a practical
+modernization roadmap with general security checkpoints.
 
 ### **What does success look like for this tool, and how will we know if it actually solves the problem statement?**
 - **Closing the Knowledge Gap:** Transitioning users from uncertainty ("I don't know what's out there") to actionable, personalized recommendations ("Here is what I should use").
@@ -36,7 +39,9 @@ The end user is the store owner. This decision directly informs our build strate
 - **Ramya Kota** (Data Analytics) — Sourcing and cleaning datasets, performing exploratory data analysis, and constructing and maintaining the project tracking log.
 - **Aishat Omolabake Ajibola** (Advanced Data Analytics) — Developing data visualization dashboards, generating analytical reports, and constructing the comprehensive PACE documentation workflow.
 - **Dennys Antunish** (IT Automation with Python) — Designing and developing the Streamlit diagnostic tool, managing the GitHub repository, and handling code deployment/pushes.
-- **Sukanya Karri** (Cybersecurity) — Designing the security architecture, identifying system vulnerabilities, implementing protection mechanisms, and ensuring NIST CSF 2.0 alignment for the tool.
+- **Sukanya Karri** (Cybersecurity) — Reviewing the tool's security and privacy
+  considerations, preparing recommended safeguards and a security roadmap, and
+  mapping those recommendations to the NIST CSF 2.0 reference framework.
 
 ### **What are the team's shared/collaborative responsibilities?**
 All team members are responsible for participating in the weekly progress meetings, contributing to the final recorded walkthrough, and ensuring individual code/documentation merges cleanly into the main repository.
@@ -45,7 +50,9 @@ All team members are responsible for participating in the weekly progress meetin
 Project Timeline – 4 weeks
 - **Week 1:** Identifying business needs, defining project scope, data sourcing, project framework design, team roles, and GitHub repository setup.
 - **Week 2:** Exploratory Data Analysis (EDA), cleaning datasets, and developing the core scoring/diagnostic logic.
-- **Week 3:** Integrating scoring logic into Streamlit, finalizing Tableau dashboard UI, and implementing security/NIST CSF 2.0 protocols.
+- **Week 3:** Integrating scoring logic into Streamlit, finalizing the Tableau
+  dashboard UI, and reviewing the project against security practices and the
+  NIST CSF 2.0 reference framework.
 - **Week 4:** Final testing, bug fixing, documentation completion, recording walkthrough video, and project submission (Deadline: August 14).
 
 ### **What is the logical build order — which pieces block others, and who is waiting on whom?**
@@ -84,7 +91,10 @@ identify relevant operational indicators.
 ### **What are the possible risks and mitigation strategies?**
 - **Risk:** Data quality issues in public datasets. **Mitigation:** Rigorous data cleaning and standardization.
 - **Risk:** Overly complex tool UI. **Mitigation:** Focus on a minimalist, jargon-free Streamlit interface.
-- **Risk:** Security and data privacy vulnerabilities. **Mitigation:** Utilization of in-memory processing to avoid persisting user information, strict prohibition of PII or payment credential collection, and adherence to NIST CSF 2.0 framework protocols.
+- **Risk:** Security and data privacy vulnerabilities. **Mitigation:** Use
+  in-memory processing to avoid intentionally persisting user information,
+  prohibit PII or payment credential collection, and use NIST CSF 2.0 as a
+  reference when documenting additional safeguards.
 
 ## PACE: Analyze Stage
 
@@ -126,12 +136,16 @@ general guidance rather than a causal or externally validated assessment.
 During the Construct stage, we build the Python Streamlit application using the four weighted assessment questions, scoring logic, recommendations, and downloadable report. We then test each feature, correct problems, and confirm that the application works on both desktop and mobile devices.
 
 ### **How will the scoring logic be integrated, and who owns that integration step to ensure nothing falls through the cracks?**
-Integration is handled by the IT Automation lead (Dennys Antunish) by embedding the scoring functions directly into the Streamlit backend.
+Integration is handled by the IT Automation lead (Dennys Antunish). The scoring
+functions remain in the separate `diagnostic.py` module and are imported into
+the Streamlit interface in `app.py`.
 
 ## PACE: Execute Stage
 
 ### **What is the minimum viable version of the diagnostic tool we can demo, and what would be "stretch" additions if time allows?**
-MVP: A 6-question survey that calculates a simple risk score and outputs a txt-style roadmap.
+MVP: Four scored technology questions plus two optional, non-scored
+business-context questions. The tool calculates a weighted risk score and
+creates a downloadable plain-text roadmap.
 
 ### **What format will the final output take for a small-business user?**
 A web-based interactive tool providing a score and an actionable, prioritized roadmap, including recommended next steps, a modernization action plan, how to measure progress, questions to ask providers, and security checkpoints.
@@ -140,7 +154,9 @@ A web-based interactive tool providing a score and an actionable, prioritized ro
 Input validation, incomplete and invalid answers, scoring edge cases, and
 report generation are covered by 22 automated tests. The application does not
 use a database or intentionally retain assessment answers after the active
-session. The final walkthrough video and upstream pull request remain pending.
+session. The upstream pull request is open and remains unmerged. The final
+walkthrough video, its verified README link, and final pull-request review
+remain pending.
 
 ### **What does the README need to cover so anyone (including graders) can run/view the project easily? And, who is responsible for it?**
 The README must cover: problem statement, solution summary, instructions to run or view the project, and the walkthrough video link. Responsibility: Collaborative team effort, with Dennys Antunish responsible for technical coordination and final assembly.

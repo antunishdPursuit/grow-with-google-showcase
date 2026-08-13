@@ -6,6 +6,12 @@ Deliver a publicly deployable Python application that lets a small-business
 owner complete a four-question technology assessment, receive a weighted risk
 result, identify the highest-priority gap, and download recommended next steps.
 
+## Current Status
+
+The application is built, tested, and publicly deployed. The final pull request
+is open against the MMC repository's `main` branch and remains unmerged. The
+walkthrough video and its verified public README link remain pending.
+
 ## Scope
 
 The minimum version includes:
@@ -40,8 +46,8 @@ actual system integrations are outside this version.
 8. Test the complete local user journey and report download.
 9. Deploy publicly and repeat the complete user journey on the live URL.
 10. Record the walkthrough and add its link to the README.
-11. Review the final repository, push the branch, and open the required pull
-   request without merging it.
+11. Review the final repository, push the branch, and keep the required pull
+   request open without merging it.
 
 ## Timeline
 

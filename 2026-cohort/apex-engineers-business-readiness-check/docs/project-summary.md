@@ -113,7 +113,8 @@ that a non-technical owner can use in a few minutes. It now connects the score
 to a practical modernization sequence instead of stopping at a diagnostic
 label. The public application, source code, tests, documentation, security note,
 and MIT license are complete. The remaining submission work is the combined
-team walkthrough video and the final open pull request.
+team walkthrough video, its verified README link, and a final review of the
+already-open, unmerged pull request.
 
 Future work could add optional data-file checks, accounting and shipping
 questions, researched vendor comparisons, and user testing. Those features
