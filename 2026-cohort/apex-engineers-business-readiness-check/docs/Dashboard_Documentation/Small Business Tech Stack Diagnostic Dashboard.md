@@ -63,10 +63,9 @@ revenue from customers with unverified vs. verified emails. Approximately
 $3.9M in revenue is associated with customer records whose email status is
 unverified. An unverified status does not prove that a customer is unreachable.
 
-### 4.4 Revenue and Transaction Count by Category
-A dual-axis combo chart (revenue as bars on the left axis, transaction count as
-a line on an unsynchronized right axis) across all seven product categories,
-with Beauty & Health highlighted in blue as context for the team's
+### 4.4 Revenue by Category
+A bar chart across all seven product categories,
+with Beauty & Health highlighted in red as context for the team's
 service-booking idea. The dataset does not contain booking-system or appointment
 fields, so booking need remains a project assumption rather than a measured
 dataset result.
