@@ -11,13 +11,21 @@ implementation of the assigned Small Business Tech-Stack Diagnostic Tool topic.
 | Team Member | Task(s) | Status | Notes |
 | :--- | :--- | :--- | :--- |
 | **Ramya Kota** | • Create Project Folder on Google Drive<br>• Source for datasets | Completed | Created the folder on Google Drive. Sourced e-commerce sales, admin, and mom-and-pop store datasets on Kaggle. Completed cleaning and analyzing data through Google Sheets. |
-| **Aishat Omolabake** | • Maintain PACE document<br>• Advanced data analysis and dashboard | Completed | Maintained the PACE workflow, analyzed the global dataset, and documented the Tableau dashboard. |
+| **Aishat Omolabake Ajibola** | • Maintain PACE document<br>• Advanced data analysis and dashboard | Completed | Maintained the PACE workflow, analyzed the global dataset, and documented the Tableau dashboard. |
 | **Dennys** | • Manage GitHub repository<br>• Design and implement project framework | Completed | Managed the repository and implemented the Python and Streamlit Business Readiness Check, automated scoring and report generation, tests, deployment, and core documentation. The team walkthrough video is in progress. |
 | **Sukanya** | • Explore security angle for project | Completed | Prepared the cybersecurity review, NIST CSF 2.0 alignment, security roadmap, and supporting visualizations. |
 
 ---
 
 ## 📂 Datasets & Research Inventory
+
+The inventory preserves every dataset and report considered during research.
+The **Completed** status records that the sourcing or review task was completed;
+it does not mean every listed dataset was combined into the final analysis. The
+implemented dashboard and diagnostic use the **Global E-Commerce & Supply
+Chain** dataset as the selected analytical dataset. Its raw CSV tables and
+cleaned `Global Dataset.xlsx` workbook are included in this repository. The
+other entries remain research candidates or supporting context.
 
 | File Name | Dataset Link | Description | Status |
 | :--- | :--- | :--- | :--- |

@@ -21,7 +21,9 @@ encountered and resolved along the way.
 
 ## 2. Data Source
 
-The dashboard is built on the team's Global Dataset workbook, an e-commerce dataset modeling a mid-size online store. Seven cleaned tables were used:
+The dashboard is built on the team's Global Dataset workbook, an e-commerce
+dataset modeling a mid-size online store. Seven cleaned analytical tables were
+used, plus one separate diagnostic-criteria reference table:
 
 - **transactions_cleaned** (100,000 rows) — core sales data: revenue, payment method, category, per-order detail
 - **customers_cleaned** (8,000 rows) — email verification status, used for the Ghost Customers analysis
@@ -30,7 +32,8 @@ The dashboard is built on the team's Global Dataset workbook, an e-commerce data
 - **returns_cleaned** (7,126 rows) — return/refund detail linked to individual transactions
 - **price_history_cleaned** (18,000 rows) — monthly listed vs. competitor pricing, promotions, and units sold per product
 - **supplier_costs_cleaned** (998 rows) — supplier-level cost and reliability data
-- **Diagnostic tool criteria** (6 rows) — the team's diagnostic scorecard, brought in as a standalone reference table
+- **Diagnostic tool criteria** (4 scored rows) — the team's diagnostic
+  scorecard, brought in as a standalone reference table
 
 ## 3. Data Model
 
@@ -44,6 +47,7 @@ The `Diagnostic tool criteria` table was deliberately left unconnected to the re
 
 <p align="center">
 <img src="img/gdm.png" title="Dataset Modeling" alt="Dataset Modeling">
+</p>
 
 ## 4. Dashboard Views
 
@@ -54,10 +58,18 @@ A bar chart of product count by category, filtered to products where `stock_unit
 A single merged pie chart (Payment Method on Color, `COUNTD(Transaction Id)` on Angle) showing the distribution of 100,000 transactions across five payment methods, including Apple Pay's growing share.
 
 ### 4.3 Revenue Exposure from Ghost Customers
-A two-bar comparison (via a *Customer Status* calculated field) of total revenue from customers with unverified vs. verified emails, showing $3.9M in revenue tied to unreachable "ghost" customers.
+A two-bar comparison (via a *Customer Status* calculated field) of total
+revenue from customers with unverified vs. verified emails. Approximately
+$3.9M in revenue is associated with customer records whose email status is
+unverified. An unverified status does not prove that a customer is unreachable.
 
 ### 4.4 Revenue and Transaction Count by Category
-A dual-axis combo chart (revenue as bars on the left axis, transaction count as a line on an unsynchronized right axis) across all seven product categories, with Beauty & Health highlighted in blue via a calculated field to draw attention to its service-booking potential.
+A dual-axis combo chart (revenue as bars on the left axis, transaction count as
+a line on an unsynchronized right axis) across all seven product categories,
+with Beauty & Health highlighted in blue as context for the team's
+service-booking idea. The dataset does not contain booking-system or appointment
+fields, so booking need remains a project assumption rather than a measured
+dataset result.
 
 ### 4.5 Tool Diagnostic Score
 A static text table reproducing the team's four-question diagnostic scorecard (Pain Point, Diagnostic Question, Input Type, Risk if "No", Weight, Recommended Fix), included as its own standalone data source so it can anchor the dashboard's narrative without needing a join to the transactional data.
@@ -71,6 +83,13 @@ All five views were combined onto a single dashboard canvas in the following str
 - The diagnostic scorecard placed at the bottom as the narrative payoff, introduced by a bridging line connecting it back to the findings above.
 
 The captions were deliberately written as a numbered sequence ("First gap... Second gap... Third gap... Fourth gap...") so the dashboard reads as one continuous story rather than four disconnected charts, closing with the scorecard's "Four gaps, one fix" line to explicitly resolve the count set up in the title.
+
+> **Evidence note:** The dashboard image below preserves the team's original
+> analytical narrative. Its statements that customers expect a wallet, that an
+> unverified customer cannot be reached, or that a booking calendar does not
+> exist are business hypotheses rather than fields directly measured by the
+> dataset. The final Business Readiness Check presents them as general
+> diagnostic prompts and does not claim that the dataset proves causation.
 
 <p align="center">
 <img src="img/dash.png" title="Small Business Tech-Stack Diagnostic Tool Dashboard" alt="Small Business Tech-Stack Diagnostic Tool Dashboard">
@@ -89,8 +108,11 @@ The captions were deliberately written as a numbered sequence ("First gap... Sec
 
 ## 7. Summary
 
-The finished dashboard translates the team's four data-backed pain points (inventory, payments, customer data, and service booking) into a single interactive narrative, closing with the diagnostic scorecard that turns those findings into a self-assessment tool for small business owners — directly supporting the team's problem statement and proposed solution.
+The finished dashboard translates the team's inventory, payment, and customer
+email indicators, plus its explicit service-booking assumption, into a single
+interactive narrative. It closes with the diagnostic scorecard that turns
+those research inputs into a self-assessment tool for small-business owners.
 
 
-- Dataset source: Kaggle
+- Dataset source: [Global E-Commerce & Supply Chain Database on Kaggle](https://www.kaggle.com/datasets/parsakh/global-e-commerce-and-supply-chain-database)
 
