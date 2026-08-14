@@ -77,9 +77,7 @@ The expanded application is built, tested, and publicly deployed. All 22
 automated tests pass. The mixed-answer assessment, optional business-context
 flow, downloadable report, and mobile layout were verified in the deployed
 environment. Team research, dashboard, workflow, cybersecurity materials, and
-the final walkthrough video are complete. The
-[final pull request](https://github.com/Mentor-Me-Collective/grow-with-google-showcase/pull/14)
-is open against the MMC repository's `main` branch and remains unmerged.
+the final walkthrough video are complete.
 
 ## Team
 
@@ -211,7 +209,7 @@ dataset.
 - Carefully researched vendor comparisons.
 - User testing with small-business owners.
 
-These ideas are outside the current submission scope.
+These ideas are outside the current release scope.
 
 ## License
 

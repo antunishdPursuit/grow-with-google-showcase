@@ -154,9 +154,8 @@ A web-based interactive tool providing a score and an actionable, prioritized ro
 Input validation, incomplete and invalid answers, scoring edge cases, and
 report generation are covered by 22 automated tests. The application does not
 use a database or intentionally retain assessment answers after the active
-session. The upstream pull request is open and remains unmerged. The final
-walkthrough video, its verified README link, and final pull-request review
-remain pending.
+session. The final walkthrough video is complete and its verified public link
+is included in the README.
 
 ### **What does the README need to cover so anyone (including graders) can run/view the project easily? And, who is responsible for it?**
 The README must cover: problem statement, solution summary, instructions to run or view the project, and the walkthrough video link. Responsibility: Collaborative team effort, with Dennys Antunish responsible for technical coordination and final assembly.

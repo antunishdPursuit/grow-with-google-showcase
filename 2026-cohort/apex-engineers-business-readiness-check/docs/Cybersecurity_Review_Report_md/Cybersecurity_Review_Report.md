@@ -246,7 +246,7 @@ rather than claiming framework compliance. Its lack of accounts, file uploads,
 external APIs, and an application database keeps the initial attack surface
 small while still delivering the tool's value.
 
-Recommendation: Retain the current safeguards for submission. Treat the
+Recommendation: Retain the current safeguards in the current release. Treat the
 three-question Cybersecurity Readiness Check, custom session management,
 security logging, and organization-level NIST activities as future work that
 requires separate design and testing.
