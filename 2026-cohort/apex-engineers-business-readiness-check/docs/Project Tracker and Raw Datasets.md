@@ -12,7 +12,7 @@ implementation of the assigned Small Business Tech-Stack Diagnostic Tool topic.
 | :--- | :--- | :--- | :--- |
 | **Ramya Kota** | • Create Project Folder on Google Drive<br>• Source for datasets | Completed | Created the folder on Google Drive. Sourced e-commerce sales, admin, and mom-and-pop store datasets on Kaggle. Completed cleaning and analyzing data through Google Sheets. |
 | **Aishat Omolabake Ajibola** | • Maintain PACE document<br>• Advanced data analysis and dashboard | Completed | Maintained the PACE workflow, analyzed the global dataset, and documented the Tableau dashboard. |
-| **Dennys** | • Manage GitHub repository<br>• Design and implement project framework | Completed | Managed the repository and implemented the Python and Streamlit Business Readiness Check, automated scoring and report generation, tests, deployment, and core documentation. The team walkthrough video is in progress. |
+| **Dennys** | • Manage GitHub repository<br>• Design and implement project framework | Completed | Managed the repository and implemented the Python and Streamlit Business Readiness Check, automated scoring and report generation, tests, deployment, core documentation, and the completed team walkthrough video. |
 | **Sukanya** | • Explore security angle for project | Completed | Prepared the cybersecurity review, NIST CSF 2.0 alignment, security roadmap, and supporting visualizations. |
 
 ---

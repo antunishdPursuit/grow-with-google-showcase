@@ -76,8 +76,8 @@ the tool returns no score instead of reporting zero risk.
 The expanded application is built, tested, and publicly deployed. All 22
 automated tests pass. The mixed-answer assessment, optional business-context
 flow, downloadable report, and mobile layout were verified in the deployed
-environment. Team research, dashboard, workflow, and cybersecurity materials
-are included in the repository. The walkthrough video is in progress. The
+environment. Team research, dashboard, workflow, cybersecurity materials, and
+the final walkthrough video are complete. The
 [final pull request](https://github.com/Mentor-Me-Collective/grow-with-google-showcase/pull/14)
 is open against the MMC repository's `main` branch and remains unmerged.
 
@@ -176,9 +176,7 @@ branch.
 
 ## Project Walkthrough Video
 
-The final walkthrough video is in progress. The submission is waiting for the
-verified public video link, which will be added here after the recording is
-complete. The final video will be no longer than five minutes.
+[Watch the final Apex Engineers project walkthrough on YouTube](https://youtu.be/oV8M_N_13U4)
 
 ## Supporting Project Materials
 
