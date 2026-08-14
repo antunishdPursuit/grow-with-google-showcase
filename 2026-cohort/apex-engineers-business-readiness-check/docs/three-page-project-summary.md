@@ -1,10 +1,12 @@
-# Business Readiness Check: Research, Solution, and Implementation Summary
+# Three-Page Project Summary: Research, Solution, and Implementation Plan
 
 **Team:** Apex Engineers
 
 **UN SDG:** [Goal 9: Industry, Innovation, and Infrastructure](https://sdgs.un.org/goals/goal9)
 
 **Live application:** [Business Readiness Check](https://business-readiness-check.onrender.com/)
+
+**Walkthrough:** [Apex Engineers project walkthrough](https://youtu.be/oV8M_N_13U4)
 
 ## Problem and Research
 
@@ -75,7 +77,40 @@ providers. The downloadable plain-text report contains the same breakdown and
 plan. The result is intended to start a modernization conversation. It is not a
 formal technology, financial, compliance, or cybersecurity audit.
 
-## Implementation
+## Implementation Plan
+
+### Steps and Timeline
+
+1. **Week 1 — Plan:** Confirm the problem statement and SDG alignment, assign
+   team roles, identify data sources, and establish the GitHub and Drive
+   workspaces.
+2. **Week 2 — Analyze:** Clean and review the selected e-commerce dataset,
+   identify the four operational pain points, and define the weighted diagnostic
+   logic.
+3. **Week 3 — Construct:** Build the Python scoring module and Streamlit
+   interface, prepare the Tableau dashboard, and review the application against
+   the team's security guidance.
+4. **Week 4 — Execute:** Test the application, verify the public deployment,
+   complete the documentation and written summary, and record the walkthrough.
+
+### Resources
+
+The team used Python, Streamlit, Pytest, GitHub, Render, Tableau, Google Sheets,
+Google Drive, the selected e-commerce dataset, the team project report, and
+public small-business and cybersecurity research. The application intentionally
+avoids a database and external service integrations so it can remain small,
+explainable, and practical within the Build Phase timeline.
+
+### Risks and Mitigations
+
+| Risk | Mitigation |
+| --- | --- |
+| The dataset does not represent every mom-and-pop store. | Present it as an illustrative case study and avoid universal claims. |
+| Scope growth delays the working solution. | Keep accounts, uploads, vendor comparisons, and live integrations outside the first release. |
+| Assessment answers expose sensitive information. | Use fixed choices, limit optional text, avoid intentional persistence, and warn users not to enter sensitive data. |
+| Local behavior differs from the public deployment. | Run automated tests and repeat the assessment and download checks on Render at desktop and mobile widths. |
+
+### Technical Implementation
 
 The scoring rules are separated from the Streamlit interface in
 `diagnostic.py`. This module defines the questions and provides functions for
@@ -112,9 +147,7 @@ The project turns the team's analysis into a small, explainable automation tool
 that a non-technical owner can use in a few minutes. It now connects the score
 to a practical modernization sequence instead of stopping at a diagnostic
 label. The public application, source code, tests, documentation, security note,
-and MIT license are complete. The remaining submission work is the combined
-team walkthrough video, its verified README link, and a final review of the
-already-open, unmerged pull request.
+MIT license, and team walkthrough video are complete.
 
 Future work could add optional data-file checks, accounting and shipping
 questions, researched vendor comparisons, and user testing. Those features

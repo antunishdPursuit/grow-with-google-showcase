@@ -116,9 +116,8 @@ apex-engineers-business-readiness-check/
 |   `-- test_diagnostic.py
 `-- docs/
     |-- Global Dataset.xlsx
-    |-- implementation-plan.md
     |-- Project Tracker and Raw Datasets.md
-    |-- project-summary.md
+    |-- three-page-project-summary.md
     |-- Team_Apex_Engineers_PACE_Workflow_Implementation_Stages.md
     |-- Cybersecurity_Review_Report_md/
     |   |-- Cybersecurity_Review_Report.md
@@ -180,8 +179,7 @@ branch.
 
 ## Supporting Project Materials
 
-- [Final written project summary](docs/project-summary.md)
-- [Implementation plan](docs/implementation-plan.md)
+- [Three-page project summary](docs/three-page-project-summary.md)
 - [Project tracker and raw dataset notes](docs/Project%20Tracker%20and%20Raw%20Datasets.md)
 - [Global e-commerce dataset](docs/Global%20Dataset.xlsx)
 - [Tableau dashboard documentation](docs/Dashboard_Documentation/Small%20Business%20Tech%20Stack%20Diagnostic%20Dashboard.md)

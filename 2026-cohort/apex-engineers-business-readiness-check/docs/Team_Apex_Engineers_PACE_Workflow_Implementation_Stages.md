@@ -165,7 +165,7 @@ The README must cover: problem statement, solution summary, instructions to run 
 All team members are responsible for the recording of the walkthrough video, which will be compiled and edited by Dennys Antunish.
 
 ### **Who is responsible for writing the short written summary (max 3 pages) of the research, solution, and implementation plan?**
-The final Markdown summary is stored in `docs/project-summary.md`. All team
+The final Markdown summary is stored in `docs/three-page-project-summary.md`. All team
 members are responsible for reviewing it and confirming that their work is
 represented accurately.
 
