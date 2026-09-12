@@ -173,7 +173,7 @@ branch.
 
 ## Project Walkthrough Video
 
-[Watch the final Apex Engineers project walkthrough on YouTube](https://youtu.be/oV8M_N_13U4)
+[Watch the final Apex Engineers project walkthrough on YouTube](https://www.youtube.com/watch?v=wgcjjEcuUVs)
 
 ## Supporting Project Materials
 
